@@ -1,4 +1,9 @@
 body {
-  width: 800pt;
+  max-width: 600pt;
   margin: 0 auto;
+}
+
+article img {
+  max-width: 600pt;
+  margin-right: auto;
 }
