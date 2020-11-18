@@ -3,6 +3,10 @@ body {
   margin: 0 auto;
 }
 
+nav a {
+  margin-right: 16pt;
+}
+
 article img {
   max-width: 600pt;
   margin-right: auto;
