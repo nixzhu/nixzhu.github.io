@@ -3,11 +3,19 @@ body {
   margin: 0 auto;
 }
 
+nav {
+  margin-top: 16pt;
+}
+
 nav a {
-  margin-right: 16pt;
+  margin-right: 8pt;
 }
 
 article img {
   max-width: 600pt;
   margin-right: auto;
+}
+
+footer {
+  color: gray;
 }
