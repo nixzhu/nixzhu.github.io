@@ -8,8 +8,23 @@ nav {
   margin-top: 16pt;
 }
 
+a {
+  color: blue;
+}
+
 nav a {
+  color: gray;
   margin-right: 8pt;
+}
+
+.date {
+  color: gray;
+  font-weight: bold;
+}
+
+.tags a {
+  color: gray;
+  margin-left: 8pt;
 }
 
 article img {
