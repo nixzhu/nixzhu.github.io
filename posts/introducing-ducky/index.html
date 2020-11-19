@@ -17,21 +17,14 @@ struct Post: Codable {
 }</code></pre><p>Note that, by default, the <strong>id</strong> is inferred as <strong>Int</strong>, the <strong>title</strong> is inferred as <strong>String</strong>, the <strong>created_at</strong> is inferred as <strong>Date</strong>. Also note that <strong>created_at</strong> is mapped to <strong>createdAt</strong>.</p><p>If you want to change the property's type, for example, infer id as UInt64, you can do that by <strong>Type Name Maps</strong>. Just add a rule: <strong>id</strong> for the Path, <strong>UInt64</strong> for the Name. Ducky will infer it as follow.</p><pre><code class="swift">import Foundation
 
 struct Post: Codable {
-  struct Creator: Codable {
-    let id: UInt64
-    let name: String
-  }
-
   let id: UInt64
   let title: String
   let createdAt: Date
-  let creator: Creator
 
   private enum CodingKeys: String, CodingKey {
     case id
     case title
     case createdAt = "created_at"
-    case creator
   }
 }</code></pre><p>If you check <strong>Needs Initializer</strong>, Ducky will infer it as follow.</p><pre><code class="swift">import Foundation
 
