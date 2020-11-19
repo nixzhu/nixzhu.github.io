@@ -1,8 +1,8 @@
-<!DOCTYPE html><html><head><title>Introducing Ducky</title><link rel="stylesheet" href="/css/main.css"></head><body><header><nav><a href="/">Home</a><a href="/posts/">Posts</a></nav></header><main><h1>Introducing Ducky</h1><article><h2>Overview</h2><p>Ducky is a document-based app that helps you infer models from <strong>JSON</strong> to save your time.</p><ul><li>It can infer <strong>Swift</strong>, <strong>Kotlin</strong>, <strong>Dart</strong> or <strong>Go</strong> models.</li><li>It provides many options for you to customize the model.</li></ul><p>In short, it's a model type generator for JSON.</p><p>Ducky is built using SwiftUI, run on iOS/iPadOS 14 or macOS 11 Big Sur.</p><img src="/images/ducky-overview.jpg" alt="Ducky Overview"><p>If you work with RESTful APIs, Ducky should save you a lot of time building the model layer.</p><h2>Examples</h2><p>There is a JSON that represents a post as follow.</p><pre><code>{
+<!DOCTYPE html><html><head><title>Introducing Ducky</title><link rel="stylesheet" href="/styles/main.css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.0/styles/default.min.css"><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.0/highlight.min.js"></script><script>hljs.initHighlightOnLoad();</script></head><body><header><nav><a href="/">Home</a><a href="/posts/">Posts</a></nav></header><main><h1>Introducing Ducky</h1><article><h2>Overview</h2><p>Ducky is a document-based app that helps you infer models from <strong>JSON</strong> to save your time.</p><ul><li>It can infer <strong>Swift</strong>, <strong>Kotlin</strong>, <strong>Dart</strong> or <strong>Go</strong> models.</li><li>It provides many options for you to customize the model.</li></ul><p>In short, it's a model type generator for JSON.</p><p>Ducky is built using SwiftUI, run on iOS/iPadOS 14 or macOS 11 Big Sur.</p><img src="/images/ducky-overview.jpg" alt="Ducky Overview"><p>If you work with RESTful APIs, Ducky should save you a lot of time building the model layer.</p><h2>Examples</h2><p>There is a JSON that represents a post as follow.</p><pre><code class="json">{
   "id": 1,
   "title": "Test",
   "created_at": "2020-11-18T18:25:43.511Z"
-}</code></pre><p>If you choose <strong>Swift</strong> as <strong>Output Type</strong>, set <strong>Model Name</strong> to <strong>Post</strong>, Ducky will infer it as follow.</p><pre><code>import Foundation
+}</code></pre><p>If you choose <strong>Swift</strong> as <strong>Output Type</strong>, set <strong>Model Name</strong> to <strong>Post</strong>, Ducky will infer it as follow.</p><pre><code class="swift">import Foundation
 
 struct Post: Codable {
   let id: Int
@@ -14,7 +14,7 @@ struct Post: Codable {
     case title
     case createdAt = "created_at"
   }
-}</code></pre><p>Note that, by default, the <strong>id</strong> is inferred as <strong>Int</strong>, the <strong>title</strong> is inferred as <strong>String</strong>, the <strong>created_at</strong> is inferred as <strong>Date</strong>. Also note that <strong>created_at</strong> is mapped to <strong>createdAt</strong>.</p><p>If you want to change the property's type, for example, infer id as UInt64, you can do that by <strong>Type Name Maps</strong>. Just add a rule: <strong>id</strong> for the Path, <strong>UInt64</strong> for the Name. Ducky will infer it as follow.</p><pre><code>import Foundation
+}</code></pre><p>Note that, by default, the <strong>id</strong> is inferred as <strong>Int</strong>, the <strong>title</strong> is inferred as <strong>String</strong>, the <strong>created_at</strong> is inferred as <strong>Date</strong>. Also note that <strong>created_at</strong> is mapped to <strong>createdAt</strong>.</p><p>If you want to change the property's type, for example, infer id as UInt64, you can do that by <strong>Type Name Maps</strong>. Just add a rule: <strong>id</strong> for the Path, <strong>UInt64</strong> for the Name. Ducky will infer it as follow.</p><pre><code class="swift">import Foundation
 
 struct Post: Codable {
   struct Creator: Codable {
@@ -33,7 +33,7 @@ struct Post: Codable {
     case createdAt = "created_at"
     case creator
   }
-}</code></pre><p>If you check <strong>Needs Initializer</strong>, Ducky will infer it as follow.</p><pre><code>import Foundation
+}</code></pre><p>If you check <strong>Needs Initializer</strong>, Ducky will infer it as follow.</p><pre><code class="swift">import Foundation
 
 struct Post: Codable {
   let id: UInt64
@@ -51,7 +51,7 @@ struct Post: Codable {
     self.title = title
     self.createdAt = createdAt
   }
-}</code></pre><h3>How about nested JSON?</h3><p>We give the post a creator as follow.</p><pre><code>{
+}</code></pre><h3>How about nested JSON?</h3><p>We give the post a creator as follow.</p><pre><code class="json">{
   "id": 1,
   "title": "Test",
   "created_at": "2020-11-18T18:25:43.511Z",
@@ -60,7 +60,7 @@ struct Post: Codable {
     "name": "nixzhu",
     "avatar_url": "https://avatar.com/nixzhu.png"
   }
-}</code></pre><p>And we add another <strong>Type Name Maps</strong> rule: <strong>creator</strong> for the Path, <strong>User</strong> for the Name. Ducky will infer it as follow.</p><pre><code>import Foundation
+}</code></pre><p>And we add another <strong>Type Name Maps</strong> rule: <strong>creator</strong> for the Path, <strong>User</strong> for the Name. Ducky will infer it as follow.</p><pre><code class="swift">import Foundation
 
 struct Post: Codable {
   struct User: Codable {
@@ -99,7 +99,7 @@ struct Post: Codable {
     self.createdAt = createdAt
     self.creator = creator
   }
-}</code></pre><p>Note that we have a nested <strong>User</strong> inside the <strong>Post</strong>. Also Note that the <strong>avatar_url</strong> is inferred as <strong>URL</strong>, and is mapped to <strong>avatarURL</strong>.</p><p>If you don't like the <strong>Nested</strong> structure. You can change the <strong>Structure Style</strong> to <strong>Extended</strong> or <strong>Flat</strong>.</p><p>If you choose <strong>Extended</strong>, Ducky will infer it as follow.</p><pre><code>import Foundation
+}</code></pre><p>Note that we have a nested <strong>User</strong> inside the <strong>Post</strong>. Also Note that the <strong>avatar_url</strong> is inferred as <strong>URL</strong>, and is mapped to <strong>avatarURL</strong>.</p><p>If you don't like the <strong>Nested</strong> structure. You can change the <strong>Structure Style</strong> to <strong>Extended</strong> or <strong>Flat</strong>.</p><p>If you choose <strong>Extended</strong>, Ducky will infer it as follow.</p><pre><code class="swift">import Foundation
 
 struct Post: Codable {
   let id: UInt64
@@ -140,7 +140,7 @@ extension Post {
       self.avatarURL = avatarURL
     }
   }
-}</code></pre><p>If you choose <strong>Flat</strong>, Ducky will infer it as follow.</p><pre><code>import Foundation
+}</code></pre><p>If you choose <strong>Flat</strong>, Ducky will infer it as follow.</p><pre><code class="swift">import Foundation
 
 struct Post: Codable {
   let id: UInt64
@@ -179,7 +179,7 @@ struct User: Codable {
     self.name = name
     self.avatarURL = avatarURL
   }
-}</code></pre><h3>How about array in JSON?</h3><p>There is a JSON that represents a library's books as follow.</p><pre><code>{
+}</code></pre><h3>How about array in JSON?</h3><p>There is a JSON that represents a library's books as follow.</p><pre><code class="json">{
   "books": [
     {
       "id": 1,
@@ -192,7 +192,7 @@ struct User: Codable {
       "author": " Bjarne Stroustrup"
     }
   ]
-}</code></pre><p>If we set <strong>Model Name</strong> to <strong>Library</strong>. Add a <strong>Type Name Maps</strong> rule: <strong>books</strong> for the Path, <strong>Book</strong> for the Name. And add a <strong>Property Enum Maps</strong> rule: <strong>language</strong> for the Path, and three cases: <strong>c|C</strong>, <strong>cpp|C++</strong>, <strong>swift|Swift</strong>. Ducky will infer it as follow.</p><pre><code>import Foundation
+}</code></pre><p>If we set <strong>Model Name</strong> to <strong>Library</strong>. Add a <strong>Type Name Maps</strong> rule: <strong>books</strong> for the Path, <strong>Book</strong> for the Name. And add a <strong>Property Enum Maps</strong> rule: <strong>language</strong> for the Path, and three cases: <strong>c|C</strong>, <strong>cpp|C++</strong>, <strong>swift|Swift</strong>. Ducky will infer it as follow.</p><pre><code class="swift">import Foundation
 
 struct Library: Codable {
   struct Book: Codable {
