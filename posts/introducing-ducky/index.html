@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><title>Introducing Ducky</title><link rel="stylesheet" href="/css/main.css"></head><body><header><nav><a href="/">Home</a><a href="/posts/">Posts</a></nav></header><main><h1>Introducing Ducky</h1><article><h2>Overview</h2><p>Ducky is a document-based app that helps you infer models from <strong>JSON</strong> to save your time.</p><ul><li>It can infer <strong>Swift</strong>, <strong>Kotlin</strong>, <strong>Dart</strong> or <strong>Go</strong> models.</li><li>It provides many options for you to customize the model.</li></ul><p>Ducky is built using SwiftUI, run on iOS/iPadOS 14 or macOS 11 Big Sur.</p><img src="/images/ducky-overview.jpg" alt="Ducky Overview"><p>If you work with RESTful APIs, Ducky should save you a lot of time building the model layer.</p><h2>Examples</h2><p>There is a json that represents a post as follow.</p><pre><code>{
+<!DOCTYPE html><html><head><title>Introducing Ducky</title><link rel="stylesheet" href="/css/main.css"></head><body><header><nav><a href="/">Home</a><a href="/posts/">Posts</a></nav></header><main><h1>Introducing Ducky</h1><article><h2>Overview</h2><p>Ducky is a document-based app that helps you infer models from <strong>JSON</strong> to save your time.</p><ul><li>It can infer <strong>Swift</strong>, <strong>Kotlin</strong>, <strong>Dart</strong> or <strong>Go</strong> models.</li><li>It provides many options for you to customize the model.</li></ul><p>In short, it's a model type generator for JSON.</p><p>Ducky is built using SwiftUI, run on iOS/iPadOS 14 or macOS 11 Big Sur.</p><img src="/images/ducky-overview.jpg" alt="Ducky Overview"><p>If you work with RESTful APIs, Ducky should save you a lot of time building the model layer.</p><h2>Examples</h2><p>There is a JSON that represents a post as follow.</p><pre><code>{
   "id": 1,
   "title": "Test",
   "created_at": "2020-11-18T18:25:43.511Z"
@@ -51,7 +51,7 @@ struct Post: Codable {
     self.title = title
     self.createdAt = createdAt
   }
-}</code></pre><h3>How about nested json?</h3><p>We give the post a creator as follow.</p><pre><code>{
+}</code></pre><h3>How about nested JSON?</h3><p>We give the post a creator as follow.</p><pre><code>{
   "id": 1,
   "title": "Test",
   "created_at": "2020-11-18T18:25:43.511Z",
@@ -179,7 +179,7 @@ struct User: Codable {
     self.name = name
     self.avatarURL = avatarURL
   }
-}</code></pre><h3>How about array in json?</h3><p>There is a json that represents a library's books as follow.</p><pre><code>{
+}</code></pre><h3>How about array in JSON?</h3><p>There is a JSON that represents a library's books as follow.</p><pre><code>{
   "books": [
     {
       "id": 1,
