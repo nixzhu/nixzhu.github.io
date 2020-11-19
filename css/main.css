@@ -1,6 +1,7 @@
 body {
   max-width: 600pt;
   margin: 0 auto;
+  font-family: -apple-system, Arial;
 }
 
 nav {
@@ -16,6 +17,12 @@ article img {
   margin-right: auto;
 }
 
+pre {
+  margin-left: 16pt;
+}
+
 footer {
   color: gray;
+  font-size: 70%;
+  margin-top: 16pt;
 }
