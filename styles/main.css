@@ -22,9 +22,13 @@ nav a {
   font-weight: bold;
 }
 
-.tags a {
+.post-tags a {
   color: gray;
   margin-left: 8pt;
+}
+
+.all-tags a {
+  margin-right: 8pt;
 }
 
 article img {
