@@ -217,4 +217,133 @@ struct Library: Codable {
   }
 
   let books: [Book]?
-}</code></pre><p>There are other options, just try it.</p><h2>Finally</h2><p>Get it on the <a href="https://apps.apple.com/us/app/ducky-model-editor/id1525505933">App Store</a>. If the link doesn't work, try searching for <strong>ducky model editor</strong> in the App Store.</p><p>Hope you like this Ducky. :]</p></article></main><footer><p>Copyright © 2020 nixzhu. All rights reserved.</p></footer><script>hljs.initHighlightingOnLoad();</script></body></html>
+}</code></pre><p>There are other options, just try it.</p><h3>How about Kotlin, Dart and Go models?</h3><p>Give a JSON as follow.</p><pre><code class="json">{
+  "id": 0,
+  "title": "Hello World",
+  "body": "I'm Ducky, help you infer models from JSON.",
+  "outputTypes": [
+    "Swift",
+    "Kotlin",
+    "Dart",
+    "Go"
+  ],
+  "developer": {
+    "username": "nixzhu",
+    "email": "zhuhongxu@gmail.com"
+  }
+}</code></pre><p>If you choose <strong>Kotlin</strong> as <strong>Output Type</strong>, set <strong>Model Name</strong> to <strong>Hello</strong>, Ducky will infer it as follow.</p><pre><code class="kotlin">package ducky
+
+import kotlinx.serialization.*
+import kotlinx.serialization.json.*
+import kotlinx.serialization.internal.*
+
+@Serializable
+data class Hello (
+  val id: Long,
+  val title: String,
+  val body: String,
+  val outputTypes: List&lt;String>,
+  val developer: Developer
+) {
+  @Serializable
+  data class Developer (
+    val username: String,
+    val email: String
+  )
+}</code></pre><p>If you change the <strong>Structure Style</strong> to <strong>Flat</strong>, Ducky will infer it as follow.</p><pre><code class="kotlin">package ducky
+
+import kotlinx.serialization.*
+import kotlinx.serialization.json.*
+import kotlinx.serialization.internal.*
+
+@Serializable
+data class Hello (
+  val id: Long,
+  val title: String,
+  val body: String,
+  val outputTypes: List&lt;String>,
+  val developer: Developer
+)
+
+@Serializable
+data class Developer (
+  val username: String,
+  val email: String
+)</code></pre><p>If you choose <strong>Dart</strong> as <strong>Output Type</strong>, Ducky will infer it as follow.</p><pre><code class="dart">import 'package:meta/meta.dart';
+import 'dart:convert';
+
+class Hello {
+  int id;
+  String title;
+  String body;
+  List&lt;String> outputTypes;
+  Developer developer;
+
+  Hello({
+    this.id,
+    this.title,
+    this.body,
+    this.outputTypes,
+    this.developer,
+  });
+
+  factory Hello.fromJSON(Map&lt;String, dynamic> json) => Hello(
+    id: json["id"],
+    title: json["title"],
+    body: json["body"],
+    outputTypes: List&lt;String>.from(json["outputTypes"].map((x) => x)),
+    developer: Developer.fromJSON(json["developer"]),
+  );
+
+  Map&lt;String, dynamic> toJSON() => {
+    "id": id,
+    "title": title,
+    "body": body,
+    "outputTypes": List&lt;dynamic>.from(outputTypes.map((x) => x)),
+    "developer": developer.toJSON(),
+  };
+}
+
+class Developer {
+  String username;
+  String email;
+
+  Developer({
+    this.username,
+    this.email,
+  });
+
+  factory Developer.fromJSON(Map&lt;String, dynamic> json) => Developer(
+    username: json["username"],
+    email: json["email"],
+  );
+
+  Map&lt;String, dynamic> toJSON() => {
+    "username": username,
+    "email": email,
+  };
+}</code></pre><p>If you choose <strong>Go</strong> as <strong>Output Type</strong>, Ducky will infer it as follow.</p><pre><code class="go">package main
+
+type Hello struct {
+  ID int `json:"id"`
+  Title string `json:"title"`
+  Body string `json:"body"`
+  OutputTypes []string `json:"outputTypes"`
+  Developer struct {
+    Username string `json:"username"`
+    Email string `json:"email"`
+  } `json:"developer"`
+}</code></pre><p>If you change the <strong>Structure Style</strong> to <strong>Flat</strong>, Ducky will infer it as follow.</p><pre><code class="go">package main
+
+type Hello struct {
+  ID int `json:"id"`
+  Title string `json:"title"`
+  Body string `json:"body"`
+  OutputTypes []string `json:"outputTypes"`
+  Developer Developer `json:"developer"`
+}
+
+type Developer struct {
+  Username string `json:"username"`
+  Email string `json:"email"`
+}</code></pre><p>Also, there are other options, just try it.</p><h2>Finally</h2><p>Get it on the <a href="https://apps.apple.com/us/app/ducky-model-editor/id1525505933">App Store</a>. If the link doesn't work, try searching for <strong>ducky model editor</strong> in the App Store.</p><p>If you have any questions or suggestions, please to contact me via <a href="mailto:zhuhongxu@gmail.com">Email</a>.</p><p>Hope you like this Ducky. :]</p></article></main><footer><p>Copyright © 2020 nixzhu. All rights reserved.</p></footer><script>hljs.initHighlightingOnLoad();</script></body></html>
