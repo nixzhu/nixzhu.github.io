@@ -160,7 +160,7 @@ footer {
 }
 
 pre {
-    background-color: #f6f6f6;
+    border-style: groove;
     padding: 10px 10px;
     margin-bottom: 10px;
 }
