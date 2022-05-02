@@ -136,12 +136,22 @@ a {
 
 .content ul {
     margin-left: 30px;
+}
+
+.content ul li {
     margin-bottom: 10px;
 }
 
-.content ol {
+.content ol li {
     margin-left: 30px;
+}
+
+.content ol li {
     margin-bottom: 10px;
+}
+
+.content ol li ol {
+    margin-top: 10px;
 }
 
 .content img {
