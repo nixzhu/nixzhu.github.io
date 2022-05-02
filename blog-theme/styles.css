@@ -49,8 +49,12 @@ nav li {
     line-height: 1.5em;
 }
 
-nav li a.selected {
+nav li a {
     text-decoration: underline;
+}
+
+nav li a.selected {
+    text-decoration: none;
 }
 
 h1 {
@@ -63,7 +67,7 @@ h2 {
 }
 
 h3 {
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 p {
@@ -80,9 +84,6 @@ a {
 
 .item-list > li {
     display: block;
-    padding: 20px;
-    border-radius: 20px;
-    background-color: #eee;
     margin-bottom: 20px;
 }
 
@@ -91,12 +92,12 @@ a {
 }
 
 .item-list h1 {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     font-size: 1.3em;
 }
 
 .item-list p {
-    margin-bottom: 0;
+    margin-bottom: 10px;
 }
 
 .tag-list {
@@ -160,8 +161,9 @@ footer {
 }
 
 pre {
-    border-style: groove;
-    padding: 10px 10px;
+    border-left: 1px solid;
+    border-left-color: #eee;
+    padding-left: 10px;
     margin-bottom: 10px;
 }
 
