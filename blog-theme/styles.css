@@ -76,7 +76,7 @@ p {
 }
 
 a {
-    color: #4183c4;
+    color: #0c69da;
 }
 
 .description {
@@ -109,7 +109,7 @@ a {
 .tag-list li,
 .tag {
     display: inline-block;
-    background-color: #000;
+    background-color: #ddf4ff;
     color: #ddd;
     padding: 4px 6px;
     border-radius: 5px;
@@ -120,7 +120,7 @@ a {
 .tag-list a,
 .tag a {
     text-decoration: none;
-    color: inherit;
+    color: #0c69da;
 }
 
 .item-page .tag-list {
@@ -196,7 +196,7 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #222;
+        background-color: #0d1117;
     }
 
     body,
@@ -204,8 +204,22 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
         color: #ddd;
     }
 
-    .item-list > li {
-        background-color: #222;
+    a {
+        color: #59a6ff;
+    }
+
+    .tag-list li,
+    .tag {
+        background-color: #152740;
+    }
+
+    .tag-list a,
+    .tag a {
+        color: #59a6ff;
+    }
+
+    p code {
+        background-color: #333;
     }
 
     pre {
