@@ -1,75 +1,120 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="og:site_name" content="NIX ZHU"/><link rel="canonical" href="https://nixzhu.dev/posts/introducing-ducky"/><meta name="twitter:url" content="https://nixzhu.dev/posts/introducing-ducky"/><meta name="og:url" content="https://nixzhu.dev/posts/introducing-ducky"/><title>Introducing Ducky | NIX ZHU</title><meta name="twitter:title" content="Introducing Ducky | NIX ZHU"/><meta name="og:title" content="Introducing Ducky | NIX ZHU"/><meta name="description" content="Ducky is a document-based app that helps you infer models from JSON to save your time."/><meta name="twitter:description" content="Ducky is a document-based app that helps you infer models from JSON to save your time."/><meta name="og:description" content="Ducky is a document-based app that helps you infer models from JSON to save your time."/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to NIX ZHU"/></head><body class="item-page"><header><div class="wrapper"><a href="/" class="site-name">NIX ZHU</a><nav><ul><li><a href="/posts" class="selected">Posts</a></li><li><a href="/notes">Notes</a></li><li><a href="/about">About</a></li></ul></nav></div></header><div class="wrapper"><article><div class="date">2020/11/19</div><div class="content"><h1>Introducing Ducky</h1><h2>Overview</h2><p>Ducky is a document-based app that helps you infer models from <strong>JSON</strong> to save your time.</p><ul><li>It can infer <strong>JSON Schema,</strong> <strong>Swift</strong>, <strong>Kotlin</strong>, <strong>Dart(Null Safe)</strong>, <strong>Go</strong> or <strong>Proto</strong> models.</li><li>It provides many options for you to customize the model.</li></ul><p>In short, it's a model type generator for JSON.</p><p>Ducky is build with <strong>SwiftUI</strong>, runs on iOS/iPadOS 14 or macOS 11 Big Sur.</p><img src="/images/introducing-ducky/overview.jpg" alt="Overview"/><p>If you work with RESTful APIs, Ducky should save you a lot of time building the model layer.</p><p>Get it on the <a href="https://apps.apple.com/us/app/ducky-model-editor/id1525505933">App Store</a>. If the link doesn't work, try searching for <strong>ducky model editor</strong> in the App Store.</p><h2>Examples</h2><p>There is a JSON that represents a post as follow.</p><pre><code><span class="hljs-punctuation">{</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="og:site_name" content="NIX ZHU"/><link rel="canonical" href="https://nixzhu.dev/posts/introducing-ducky"/><meta name="twitter:url" content="https://nixzhu.dev/posts/introducing-ducky"/><meta name="og:url" content="https://nixzhu.dev/posts/introducing-ducky"/><title>Introducing Ducky | NIX ZHU</title><meta name="twitter:title" content="Introducing Ducky | NIX ZHU"/><meta name="og:title" content="Introducing Ducky | NIX ZHU"/><meta name="description" content="Ducky is a document-based app that helps you infer models from JSON to save your time."/><meta name="twitter:description" content="Ducky is a document-based app that helps you infer models from JSON to save your time."/><meta name="og:description" content="Ducky is a document-based app that helps you infer models from JSON to save your time."/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to NIX ZHU"/></head><body class="item-page"><header><div class="wrapper"><a href="/" class="site-name">NIX ZHU</a><nav><ul><li><a href="/posts" class="selected">Posts</a></li><li><a href="/notes">Notes</a></li><li><a href="/about">About</a></li></ul></nav></div></header><div class="wrapper"><article><div class="date">2020/11/19</div><div class="content"><h1>Introducing Ducky</h1><h2>Overview</h2><p>Ducky is a document-based app that helps you infer models from <strong>JSON</strong> to save your time.</p><ul><li>It can infer <strong>JSON Schema,</strong> <strong>Swift</strong>, <strong>Kotlin</strong>, <strong>Dart(Null Safe)</strong>, <strong>Go</strong> or <strong>Proto</strong> models.</li><li>It provides many options for you to customize the model.</li></ul><p>In short, it's a model type generator for JSON.</p><p>Ducky is build with <strong>SwiftUI</strong>, runs on iOS/iPadOS 14 or macOS 11 Big Sur.</p><img src="/images/introducing-ducky/overview.jpg" alt="Overview"/><p>If you work with RESTful APIs, Ducky should save you a lot of time building the model layer.</p><p>Get it on the <a href="https://apps.apple.com/us/app/ducky-model-editor/id1525505933">App Store</a>. If the link doesn't work, try searching for <strong>ducky model editor</strong> in the App Store.</p><h2>Examples</h2><p>There is a JSON that represents a post as follow:</p><pre><code><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Test&quot;</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;created_at&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2020-11-18T18:25:43.511Z&quot;</span>
-<span class="hljs-punctuation">}</span></code></pre><p>If you choose <strong>Swift</strong> as <strong>Output Type</strong>, set <strong>Model Name</strong> to <strong>Post</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
-
-<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
-  <span class="hljs-keyword">let</span> id: <span class="hljs-type">Int</span>
-  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
-  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
-
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
-    <span class="hljs-keyword">case</span> id
-    <span class="hljs-keyword">case</span> title
-    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
-  }
-}</code></pre><p>Note that, by default, the <strong>id</strong> is inferred as <strong>Int</strong>, the <strong>title</strong> is inferred as <strong>String</strong>, the <strong>created_at</strong> is inferred as <strong>Date</strong>. Also note that <strong>created_at</strong> is mapped to <strong>createdAt</strong>.</p><p>If you want to change the property's type, for example, infer id as UInt64, you can do that by <strong>Type Name Maps</strong>. Just add a rule: <strong>id</strong> for the Path, <strong>UInt64</strong> for the Name. Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
-
-<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
-  <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
-  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
-  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
-
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
-    <span class="hljs-keyword">case</span> id
-    <span class="hljs-keyword">case</span> title
-    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
-  }
-}</code></pre><p>If you check <strong>Needs Initializer</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
-
-<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
-  <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
-  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
-  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
-
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
-    <span class="hljs-keyword">case</span> id
-    <span class="hljs-keyword">case</span> title
-    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
-  }
-
-  <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">title</span>: <span class="hljs-type">String</span>, <span class="hljs-params">createdAt</span>: <span class="hljs-type">Date</span>) {
-    <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
-    <span class="hljs-keyword">self</span>.title <span class="hljs-operator">=</span> title
-    <span class="hljs-keyword">self</span>.createdAt <span class="hljs-operator">=</span> createdAt
-  }
-}</code></pre><h3>How about nested JSON?</h3><p>We give the post a creator as follow.</p><pre><code><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Test&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Hello&quot;</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;created_at&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2020-11-18T18:25:43.511Z&quot;</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;creator&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">42</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nixzhu&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nixzhu&quot;</span><span class="hljs-punctuation">,</span>
     <span class="hljs-attr">&quot;avatar_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://avatar.com/nixzhu.png&quot;</span>
   <span class="hljs-punctuation">}</span>
-<span class="hljs-punctuation">}</span></code></pre><p>And we add another <strong>Type Name Maps</strong> rule: <strong>creator</strong> for the Path, <strong>User</strong> for the Name. Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+<span class="hljs-punctuation">}</span></code></pre><p>If you choose <strong>Swift</strong> as <strong>Output Type</strong>, set <strong>Model Name</strong> to <strong>Post</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
-  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">User</span>: <span class="hljs-title class_">Codable</span> {
-    <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
-    <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Creator</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">let</span> id: <span class="hljs-type">Int</span>
+    <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
     <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
       <span class="hljs-keyword">case</span> id
-      <span class="hljs-keyword">case</span> name
+      <span class="hljs-keyword">case</span> username
+      <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
+    }
+  }
+
+  <span class="hljs-keyword">let</span> id: <span class="hljs-type">Int</span>
+  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
+  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
+  <span class="hljs-keyword">let</span> creator: <span class="hljs-type">Creator</span>
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+    <span class="hljs-keyword">case</span> id
+    <span class="hljs-keyword">case</span> title
+    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
+    <span class="hljs-keyword">case</span> creator
+  }
+}</code></pre><p>Note that, by default, the <strong>id</strong> is inferred as <strong>Int</strong>, the <strong>title</strong> is inferred as <strong>String</strong>, the <strong>created_at</strong> is inferred as <strong>Date</strong> and mapped to <strong>createdAt</strong>, the <strong>avatar_url</strong> is inferred as <strong>URL</strong> and mapped to <strong>avatarURL</strong>.</p><p>If you want to change the property's type, for example, infer <strong>id</strong> as <strong>UInt64</strong>, you can do that with <strong>Type Name Maps</strong>. Just add a rule: <strong>id</strong> for the <strong>Path</strong>, <strong>UInt64</strong> for the <strong>Name</strong>. Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Creator</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
+    <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+      <span class="hljs-keyword">case</span> id
+      <span class="hljs-keyword">case</span> username
+      <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
+    }
+  }
+
+  <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
+  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
+  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
+  <span class="hljs-keyword">let</span> creator: <span class="hljs-type">Creator</span>
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+    <span class="hljs-keyword">case</span> id
+    <span class="hljs-keyword">case</span> title
+    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
+    <span class="hljs-keyword">case</span> creator
+  }
+}</code></pre><p>Note that both <strong>Post's id</strong> and <strong>Creator's id</strong> are inferred as <strong>UInt64</strong>, if you only needs one be inferred as <strong>UInt64</strong>, modify the <strong>Path</strong> to <strong>Post.id</strong> or <strong>creator.id</strong> or <strong>Post.creator.id</strong>, that's how <strong>Path</strong> works.</p><p>If you check <strong>Needs Initializer</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Creator</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
+    <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+      <span class="hljs-keyword">case</span> id
+      <span class="hljs-keyword">case</span> username
       <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
     }
 
-    <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">name</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
+    <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">username</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
       <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
-      <span class="hljs-keyword">self</span>.name <span class="hljs-operator">=</span> name
+      <span class="hljs-keyword">self</span>.username <span class="hljs-operator">=</span> username
+      <span class="hljs-keyword">self</span>.avatarURL <span class="hljs-operator">=</span> avatarURL
+    }
+  }
+
+  <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
+  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
+  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
+  <span class="hljs-keyword">let</span> creator: <span class="hljs-type">Creator</span>
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+    <span class="hljs-keyword">case</span> id
+    <span class="hljs-keyword">case</span> title
+    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
+    <span class="hljs-keyword">case</span> creator
+  }
+
+  <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">title</span>: <span class="hljs-type">String</span>, <span class="hljs-params">createdAt</span>: <span class="hljs-type">Date</span>, <span class="hljs-params">creator</span>: <span class="hljs-type">Creator</span>) {
+    <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
+    <span class="hljs-keyword">self</span>.title <span class="hljs-operator">=</span> title
+    <span class="hljs-keyword">self</span>.createdAt <span class="hljs-operator">=</span> createdAt
+    <span class="hljs-keyword">self</span>.creator <span class="hljs-operator">=</span> creator
+  }
+}</code></pre><p>And we add another <strong>Type Name Maps</strong> rule: <strong>creator</strong> or <strong>Post.creator</strong> for the <strong>Path</strong>, <strong>User</strong> for the <strong>Name</strong>. Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">User</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
+    <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+      <span class="hljs-keyword">case</span> id
+      <span class="hljs-keyword">case</span> username
+      <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
+    }
+
+    <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">username</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
+      <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
+      <span class="hljs-keyword">self</span>.username <span class="hljs-operator">=</span> username
       <span class="hljs-keyword">self</span>.avatarURL <span class="hljs-operator">=</span> avatarURL
     }
   }
@@ -92,7 +137,7 @@
     <span class="hljs-keyword">self</span>.createdAt <span class="hljs-operator">=</span> createdAt
     <span class="hljs-keyword">self</span>.creator <span class="hljs-operator">=</span> creator
   }
-}</code></pre><p>Note that we have a nested <strong>User</strong> inside the <strong>Post</strong>. Also Note that the <strong>avatar_url</strong> is inferred as <strong>URL</strong>, and is mapped to <strong>avatarURL</strong>.</p><p>If you don't like the <strong>Nested</strong> structure. You can change the <strong>Structure Style</strong> to <strong>Extended</strong> or <strong>Flat</strong>.</p><p>If you choose <strong>Extended</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+}</code></pre><p>If you don't like the <strong>Nested</strong> structure. You can change the <strong>Structure Style</strong> to <strong>Extended</strong> or <strong>Flat</strong>.</p><p>If you choose <strong>Extended</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
   <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
@@ -118,22 +163,22 @@
 <span class="hljs-keyword">extension</span> <span class="hljs-title class_">Post</span> {
   <span class="hljs-keyword">struct</span> <span class="hljs-title class_">User</span>: <span class="hljs-title class_">Codable</span> {
     <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
-    <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
     <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
       <span class="hljs-keyword">case</span> id
-      <span class="hljs-keyword">case</span> name
+      <span class="hljs-keyword">case</span> username
       <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
     }
 
-    <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">name</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
+    <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">username</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
       <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
-      <span class="hljs-keyword">self</span>.name <span class="hljs-operator">=</span> name
+      <span class="hljs-keyword">self</span>.username <span class="hljs-operator">=</span> username
       <span class="hljs-keyword">self</span>.avatarURL <span class="hljs-operator">=</span> avatarURL
     }
   }
-}</code></pre><p>If you choose <strong>Flat</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+}</code></pre><p>If you choose <strong>Flat</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
   <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
@@ -158,21 +203,73 @@
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">User</span>: <span class="hljs-title class_">Codable</span> {
   <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
-  <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
+  <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
   <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
 
   <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
     <span class="hljs-keyword">case</span> id
-    <span class="hljs-keyword">case</span> name
+    <span class="hljs-keyword">case</span> username
     <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
   }
 
-  <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">name</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
+  <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">username</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
     <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
-    <span class="hljs-keyword">self</span>.name <span class="hljs-operator">=</span> name
+    <span class="hljs-keyword">self</span>.username <span class="hljs-operator">=</span> username
     <span class="hljs-keyword">self</span>.avatarURL <span class="hljs-operator">=</span> avatarURL
   }
-}</code></pre><h3>How about array in JSON?</h3><p>There is a JSON that represents a library's books as follow.</p><pre><code><span class="hljs-punctuation">{</span>
+}</code></pre><h3>How about Object as Dictionary?</h3><p>Give a JSON as follow:</p><pre><code>{
+  <span class="hljs-string">&quot;countries&quot;</span>: {
+    <span class="hljs-string">&quot;china&quot;</span>: {
+      <span class="hljs-string">&quot;population&quot;</span>: <span class="hljs-string">&quot;1,412,600,000&quot;</span>,
+      <span class="hljs-string">&quot;market&quot;</span>: {
+        <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">8964</span>
+      }
+    },
+    <span class="hljs-string">&quot;usa&quot;</span>: {
+      <span class="hljs-string">&quot;population&quot;</span>: <span class="hljs-string">&quot;332,580,125&quot;</span>,
+      <span class="hljs-string">&quot;freedomOfSpeech&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;market&quot;</span>: {
+        <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">100000</span>,
+        <span class="hljs-string">&quot;companies&quot;</span>: [
+          <span class="hljs-string">&quot;Apple&quot;</span>,
+          <span class="hljs-string">&quot;Microsoft&quot;</span>,
+          <span class="hljs-string">&quot;Amazon&quot;</span>,
+          <span class="hljs-string">&quot;Alphabet&quot;</span>
+        ]
+      }
+    }
+  }
+}</code></pre><p>Set <strong>Model Name</strong> to <strong>World</strong>, by default, the <strong>countries</strong> will be inferred as a <strong>struct</strong>. But with the <strong>Object As Dictionary</strong> option, add a rule: <strong>countries</strong> for the <strong>Path</strong>, it will be inferred as a <strong>Dictionary</strong>.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">World</span>: <span class="hljs-title class_">Codable</span> {
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">China</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Market</span>: <span class="hljs-title class_">Codable</span> {
+      <span class="hljs-keyword">let</span> value: <span class="hljs-type">Int</span>
+      <span class="hljs-keyword">let</span> companies: [<span class="hljs-type">String</span>]<span class="hljs-operator">?</span>
+    }
+
+    <span class="hljs-keyword">let</span> population: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> market: <span class="hljs-type">Market</span>
+    <span class="hljs-keyword">let</span> freedomOfSpeech: <span class="hljs-type">Bool</span>?
+  }
+
+  <span class="hljs-keyword">let</span> countries: [<span class="hljs-type">String</span>: <span class="hljs-type">China</span>]
+}</code></pre><p>Note that, the <strong>Dictionary's value type</strong> is <strong>China</strong> (It merged with <strong>china</strong> and <strong>usa</strong>) , we can modify it with <strong>Type Name Maps</strong>, add a rule: <strong>china</strong> for the <strong>Path</strong>, <strong>Country</strong> for the <strong>Name</strong>, then we have:</p><pre><code><span class="hljs-keyword">import</span> Foundation
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">World</span>: <span class="hljs-title class_">Codable</span> {
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Country</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Market</span>: <span class="hljs-title class_">Codable</span> {
+      <span class="hljs-keyword">let</span> value: <span class="hljs-type">Int</span>
+      <span class="hljs-keyword">let</span> companies: [<span class="hljs-type">String</span>]<span class="hljs-operator">?</span>
+    }
+
+    <span class="hljs-keyword">let</span> population: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> market: <span class="hljs-type">Market</span>
+    <span class="hljs-keyword">let</span> freedomOfSpeech: <span class="hljs-type">Bool</span>?
+  }
+
+  <span class="hljs-keyword">let</span> countries: [<span class="hljs-type">String</span>: <span class="hljs-type">Country</span>]
+}</code></pre><p>Looks good, right?</p><h3>How about array in JSON?</h3><p>There is a JSON that represents a library's books as follow:</p><pre><code><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">&quot;books&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
     <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
@@ -185,7 +282,7 @@
       <span class="hljs-attr">&quot;author&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot; Bjarne Stroustrup&quot;</span>
     <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">]</span>
-<span class="hljs-punctuation">}</span></code></pre><p>If we set <strong>Model Name</strong> to <strong>Library</strong>. Add a <strong>Type Name Maps</strong> rule: <strong>books</strong> for the Path, <strong>Book</strong> for the Name. And add a <strong>Property Enum Maps</strong> rule: <strong>language</strong> for the Path, and three cases: <strong>c|C</strong>, <strong>cpp|C++</strong>, <strong>swift|Swift</strong>. Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+<span class="hljs-punctuation">}</span></code></pre><p>If we set <strong>Model Name</strong> to <strong>Library</strong>. Add a <strong>Type Name Maps</strong> rule: <strong>books</strong> for the <strong>Path</strong>, <strong>Book</strong> for the <strong>Name</strong>. And add a <strong>Property Enum Maps</strong> rule: <strong>language</strong> for the <strong>Path</strong>, and three cases: <strong>c</strong>|<strong>C</strong>, <strong>cpp</strong>|<strong>C++</strong>, <strong>swift</strong>|<strong>Swift</strong>. Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Library</span>: <span class="hljs-title class_">Codable</span> {
   <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Book</span>: <span class="hljs-title class_">Codable</span> {
@@ -201,7 +298,7 @@
   }
 
   <span class="hljs-keyword">let</span> books: [<span class="hljs-type">Book</span>]
-}</code></pre><p>If you check <strong>All Properties Optional</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+}</code></pre><p>If you check <strong>All Properties Optional</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Library</span>: <span class="hljs-title class_">Codable</span> {
   <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Book</span>: <span class="hljs-title class_">Codable</span> {
@@ -217,7 +314,7 @@
   }
 
   <span class="hljs-keyword">let</span> books: [<span class="hljs-type">Book</span>]<span class="hljs-operator">?</span>
-}</code></pre><p>There are other options, just try it.</p><h3>How about Kotlin, Dart and Go models?</h3><p>Give a JSON as follow.</p><pre><code><span class="hljs-punctuation">{</span>
+}</code></pre><p>There are other options, just try it.</p><h3>How about Kotlin, Dart and Go models?</h3><p>Give a JSON as follow:</p><pre><code><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Hello World&quot;</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;body&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;I&#x27;m Ducky, help you infer models from JSON.&quot;</span><span class="hljs-punctuation">,</span>
@@ -231,7 +328,7 @@
     <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nixzhu&quot;</span><span class="hljs-punctuation">,</span>
     <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;zhuhongxu@gmail.com&quot;</span>
   <span class="hljs-punctuation">}</span>
-<span class="hljs-punctuation">}</span></code></pre><p>If you choose <strong>Kotlin</strong> as <strong>Output Type</strong>, set <strong>Model Name</strong> to <strong>Hello</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">package</span> ducky
+<span class="hljs-punctuation">}</span></code></pre><p>If you choose <strong>Kotlin</strong> as <strong>Output Type</strong>, set <strong>Model Name</strong> to <strong>Hello</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">package</span> ducky
 
 <span class="hljs-keyword">import</span> kotlinx.serialization.*
 <span class="hljs-keyword">import</span> kotlinx.serialization.json.*
@@ -250,7 +347,7 @@
     <span class="hljs-keyword">val</span> username: String,
     <span class="hljs-keyword">val</span> email: String
   )
-}</code></pre><p>If you change the <strong>Structure Style</strong> to <strong>Flat</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">package</span> ducky
+}</code></pre><p>If you change the <strong>Structure Style</strong> to <strong>Flat</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">package</span> ducky
 
 <span class="hljs-keyword">import</span> kotlinx.serialization.*
 <span class="hljs-keyword">import</span> kotlinx.serialization.json.*
@@ -269,7 +366,7 @@
 <span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Developer</span> </span>(
   <span class="hljs-keyword">val</span> username: String,
   <span class="hljs-keyword">val</span> email: String
-)</code></pre><p>If you choose <strong>Dart</strong> as <strong>Output Type</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:meta/meta.dart&#x27;</span>;
+)</code></pre><p>If you choose <strong>Dart</strong> as <strong>Output Type</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:meta/meta.dart&#x27;</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;dart:convert&#x27;</span>;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hello</span> </span>{
@@ -322,7 +419,7 @@
     <span class="hljs-string">&quot;username&quot;</span>: username,
     <span class="hljs-string">&quot;email&quot;</span>: email,
   };
-}</code></pre><p>If you choose <strong>Go</strong> as <strong>Output Type</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">package</span> main
+}</code></pre><p>If you choose <strong>Go</strong> as <strong>Output Type</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">type</span> Hello <span class="hljs-keyword">struct</span> {
   ID <span class="hljs-type">int</span> <span class="hljs-string">`json:&quot;id&quot;`</span>
@@ -333,7 +430,7 @@
     Username <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;username&quot;`</span>
     Email <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;email&quot;`</span>
   } <span class="hljs-string">`json:&quot;developer&quot;`</span>
-}</code></pre><p>If you change the <strong>Structure Style</strong> to <strong>Flat</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">package</span> main
+}</code></pre><p>If you change the <strong>Structure Style</strong> to <strong>Flat</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">type</span> Hello <span class="hljs-keyword">struct</span> {
   ID <span class="hljs-type">int</span> <span class="hljs-string">`json:&quot;id&quot;`</span>

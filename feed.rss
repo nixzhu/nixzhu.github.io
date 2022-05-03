@@ -1,75 +1,120 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>NIX ZHU</title><description>I'm NIX. An app developer.</description><link>https://nixzhu.dev</link><language>en</language><lastBuildDate>Mon, 2 May 2022 18:38:36 +0800</lastBuildDate><pubDate>Mon, 2 May 2022 18:38:36 +0800</pubDate><ttl>250</ttl><atom:link href="https://nixzhu.dev/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://nixzhu.dev/notes/mac-apps</guid><title>作为 App 开发者会先安装的 Mac App</title><description>都是常用 App，久经考验</description><link>https://nixzhu.dev/notes/mac-apps</link><pubDate>Sun, 1 May 2022 09:41:00 +0800</pubDate><content:encoded><![CDATA[<h1>作为 App 开发者会先安装的 Mac App</h1><h2>翻墙</h2><ul><li><a href="https://github.com/yichengchen/clashX">ClashX</a>，不论是作为开发者还是作为一个普通人，我们都需要完整的互联网，希望有一天我们不再需要它</li></ul><h2>开发</h2><ul><li><a href="https://developer.apple.com/xcode/">Xcode</a>，作为 App 开发者，必须安装的工具。当然，有经验的开发者不会从 Mac App Store 下载，而是从网站下载，除了安装过程更可控，也方便多版本共存。此外，我不信任任何第三方下载方式</li><li><a href="https://git-fork.com">Fork</a>，Git 客户端。虽然日常也在命令行中使用 Git（开分支或做合并），有时也直接在 Xcode 中 commit，但有个 GUI 客户端仍然比较方便（切分支或查看代码）</li><li><a href="https://apps.apple.com/us/app/a-companion-for-swiftui/id1485436674">A Companion for SwiftUI</a>，如其名字所示，可帮你探索、学习 SwiftUI，省去许多查找其用法的时间</li><li><a href="https://apps.apple.com/us/app/ducky-model-editor/id1525505933">Ducky</a>，帮助开发者从 JSON 推断出多种语言的模型以节省时间，还提供许多实用的选项（由本人开发）</li><li><a href="https://github.com/nicklockwood/SwiftFormat">SwiftFormat for Xcode</a>，提供一个 Xcode 的源代码编辑器扩展。在 Xcode 中设置好快捷键后，能在编写 Swift 代码时更好地格式化</li><li><a href="https://apps.apple.com/us/app/system-color-picker/id1545870783">System Color Picker</a>，简单的颜色提取工具，支持多种输出格式，比系统自带的好用</li><li><a href="https://apps.apple.com/us/app/boop/id1518425043">Boop</a>，帮助处理或转换文本的工具，开发者才懂</li></ul><h2>文字处理</h2><ul><li><a href="https://typora.io">Typora</a>，Markdown 编辑器，主要用来写文档。有所见即所得模式，也有源码模式，还有很好的快捷键支持，写起来很舒服</li></ul><h2>社交</h2><ul><li><a href="https://apps.apple.com/us/app/twitter/id1482454543">Twitter</a>，普通人也有“鸣叫”的权力，还能帮你认识全世界各领域有趣的人</li></ul>]]></content:encoded></item><item><guid isPermaLink="true">https://nixzhu.dev/notes/resolve-package-dependencies-in-terminal</guid><title>在终端里解决 Swift 包依赖</title><description>Xcode 不走系统代理，若遇到 Swift Package 拉取失败，可通过命令行解决</description><link>https://nixzhu.dev/notes/resolve-package-dependencies-in-terminal</link><pubDate>Tue, 21 Dec 2021 09:41:00 +0800</pubDate><content:encoded><![CDATA[<h1>在终端里解决 Swift 包依赖</h1><p>因为沦陷区的互联网受限，Xcode 可能无法正常拉取来自 GitHub 的 Swift Package。由于 Xcode 不走系统代理，我们只能使用命令行解决：</p><ol><li>关闭 Xcode</li></ol><ol start="2"><li>终端启用代理（此处使用 ClashX 提供的命令，请根据你的情况调整）</li></ol><p><code>export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890</code></p><ol start="3"><li>进入 Xcode 工程所在目录，然后使用系统的源码管理工具解决包依赖（如此代理才能干预）</li></ol><p><code>xcodebuild -resolvePackageDependencies -scmProvider system</code></p><ol start="4"><li>再打开对应的 Xcode 工程</li></ol><p>此方法可处理普通的 Xcode 工程，也可以处理单纯的 Swift Package 的依赖</p>]]></content:encoded></item><item><guid isPermaLink="true">https://nixzhu.dev/notes/swiftformat-for-xcode</guid><title>通过快捷键在 Xcode 中使用 SwiftFormat</title><description>SwiftFormat 有一个 Xcode Source Editor Extension，在我们定义好快捷键的情况下，在 Xcode 内使用的体验很不错</description><link>https://nixzhu.dev/notes/swiftformat-for-xcode</link><pubDate>Tue, 19 Oct 2021 09:41:00 +0800</pubDate><content:encoded><![CDATA[<h1>通过快捷键在 Xcode 中使用 SwiftFormat</h1><h2>安装</h2><p>步骤如下：</p><ol><li>安装 <strong>SwiftFormat for Xcode.app</strong>。可直接去其 GitHub 仓库<a href="https://github.com/nicklockwood/SwiftFormat/releases">下载安装</a>。如果你使用 Homebrew，也可<a href="https://github.com/nicklockwood/SwiftFormat#xcode-source-editor-extension">参考其介绍以安装</a>。装好后记得打开一下此应用，确保有权限使用</li><li>安装此 app 提供的 Xcode Source Editor Extension：<ol><li>点击状态栏左上角的 ，打开<strong>系统偏好设置</strong>，选择<strong>扩展</strong></li><li>找到并选中 <strong>Xcode Source Editor</strong>，然后右边勾选 <strong>SwiftFormat</strong></li><li>重新启动一下 Xcode，然后检查 Xcode 的 Editor 菜单底部，应该会出现 <strong>SwiftFormat</strong> 菜单</li><li>设置针对当前文件的快捷键：</li><li>从 Xcode 的菜单打开 <strong>Preferences...</strong>，选中 <strong>Key Bindings</strong></li><li>在右上的 Filter 里输入 <strong>swiftformat</strong>，然后选中第二个 <strong>SwiftFormat &gt; Format File</strong></li><li>双击高亮行对应 Key 的位置，然后同时按下键盘上的 <strong>Shift</strong> + <strong>Ctrl</strong> + <strong>I</strong>（如果你喜欢其它快捷键可自行选择）</li></ol></li></ol><p>经过上述步骤，我们就给 Xcode 安装好了 SwiftFormat 的 Source Editor Extension，而且可以用快捷键触发。现在你可以在 Xcode 里随意选中一个 Swift 文件，然后按下快捷键 <strong>Shift</strong> + <strong>Ctrl</strong> + <strong>I</strong>，SwiftFormat 就会根据它当前的规则对这个被选中的 Swift 文件进行代码风格的格式化。如果你的代码经过 Git 管理，应该能看到格式化前后的差异，比如一些空行、逗号、缩进之类</p><p>在实践上，比如你在做某个功能，修改了某些 Swift 文件，那就在改动这些文件后，按下快捷键 <strong>Shift</strong> + <strong>Ctrl</strong> + <strong>I</strong> 来格式化代码（必要时再手动做一些微调）。以此，可以循序渐进地改善整体代码的风格</p><h2>配置</h2><p>刚才提到<strong>规则</strong>，你可以打开 <strong>SwiftFormat for Xcode.app</strong> ，选中第二个 <strong>Rules</strong> Tab 进行调整</p><p>取消勾选 <strong>Infer Options Automatically</strong>，这样的话我们可以搜索并<strong>调整</strong>一些选项的参数，例如：</p><ul><li>勾选 <strong>acronyms</strong>，保持 <strong>Acronyms</strong> 其值为 <strong>ID,URL,UUID,VC</strong>，这样一些属性命名中的缩略词会被自动“纠正”，以符合 <a href="https://github.com/SketchK/the-swift-api-design-guidelines-in-chinese/blob/master/README.md">Swift 的 API 设计指南</a></li></ul><ul><li>勾选 <strong>blankLinesBetweenImports</strong>，会移除 import 语句之间的空行</li></ul><ul><li>勾选 <strong>blockComments</strong>，自动将注释换成 <strong>//</strong> 或 <strong>///</strong> 风格</li></ul><ul><li><strong>extensionAccessControl</strong>。将其 <strong>Extension Access Control Level Placement</strong> 改为 <strong>on-declarations</strong>，以将访问控制定义在具体的属性或方法上</li></ul><ul><li><strong>fileHeader</strong>。将其 <strong>Header</strong> 改为 <strong>strip</strong>，以去除头部的文件注释</li></ul><ul><li><strong>hoistPatternLet</strong>。将其 <strong>Pattern Let</strong> 改为 <strong>inline</strong>，以符合 <a href="https://pages.swift.gg/google-swift-style-guide-in-chinese/">Google 的规范</a></li></ul><ul><li><strong>indent</strong>。将其 <strong>Ifdef Indent</strong> 改为 <strong>no-indent</strong>；<strong>Indent Strings</strong> 改为 <strong>true</strong></li></ul><ul><li><strong>modifierOrder</strong>。将其 <strong>Modifier Oder</strong> 改为 <strong>final,open,public,fileprivate,private,private(set),override,convenience,lazy,static,weak</strong>，如果你不喜欢这个顺序可自行调整</li></ul><ul><li><strong>spaceAroundOperators</strong>。将其 <strong>Ranges</strong> 改为 <strong>no-space</strong>，这样 <strong>...</strong> 和 <strong>..&lt;</strong> 操作符前后的空格会被去除</li></ul><ul><li><strong>unusedArguments</strong>。将其 <strong>Strip Unused Arguments</strong> 改为 <strong>closure-only</strong>，防止一些方法的实参被替换为下划线</li></ul><ul><li><strong>wrap</strong>。将其 <strong>Max Width</strong> 改为 <strong>100</strong>，这样太长的代码会被折行</li></ul><ul><li>针对 <strong>wrapArguments</strong>，将其<ul><li><strong>Wrap Arguments</strong> 改为 <strong>before-first</strong></li><li><strong>Wrap Collections</strong> 改为 <strong>before-first</strong></li><li><strong>Wrap Conditions</strong> 改为 <strong>preserve</strong></li><li><strong>Wrap Parameters</strong> 改为 <strong>before-first</strong></li><li><strong>Wrap Return Type</strong> 改为 <strong>preserve</strong></li><li><strong>Wrap Typealiases</strong> 改为 <strong>preserve</strong></li></ul></li></ul><p><strong>Swift version</strong> 选择 <strong>5.5</strong>（目前 app v0.49.7 所支持的最高 Swift 版本）。</p><p>可搜索并<strong>关闭</strong>如下规则：</p><ul><li><strong>markTypes</strong>。开启的话，会强制你写一些 <strong>// MARK:</strong> 标记</li><li><strong>organizeDeclarations</strong>。开启的话，会按照更细致的规则对各种声明进行排序，可能不是你所希望的</li><li><strong>sortedImports</strong>。开启的话，会将 import 的语句按照字母表排序</li><li><strong>sortedSwitchCases</strong>。开启的话，会将 switch 的 case 语句按照字母表排序</li><li><strong>wrapSwitchCases</strong>。开启的话，会强制 switch 时每个 case 单独一行</li></ul><p>可进一步参考详细的<a href="https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md">规则文档</a></p><h2>小技巧</h2><p>如果你想将有多个参数的函数的参数进行折行，只需先将其尾部的括号换行（可在输入最后一个参数后进行），然后按下快捷键（比一个个手动换行要快不少）</p>]]></content:encoded></item><item><guid isPermaLink="true">https://nixzhu.dev/notes/new-apple-distrubution-certificate</guid><title>新的 Apple 分发证书</title><description>生成新的分发证书，以提交 App 到 App Store</description><link>https://nixzhu.dev/notes/new-apple-distrubution-certificate</link><pubDate>Sat, 31 Jul 2021 09:41:00 +0800</pubDate><content:encoded><![CDATA[<h1>新的 Apple 分发证书</h1><p>如果你在新 Mac 上遇到无法提交 App 到 App Store 的问题（参考 <a href="https://daddycoding.com/2020/07/22/missing-private-key/">Missing Private Key</a>）</p><ol><li>打开<strong>钥匙串访问</strong>，菜单选择<strong>证书助理</strong> -&gt; <strong>从证书颁发机构请求证书…</strong></li><li>填入常用电子邮件和昵称，存储到磁盘，得到 <strong>CertificateSigningRequest.certSigningRequest</strong></li><li>到<a href="https://developer.apple.com/account/resources/certificates/add">这里</a>去 <strong>Create a New Certificate</strong><ol><li>选择 Apple Distrubution，Continue</li><li>Choose File，将之前得到的 CertificateSigningRequest.certSigningRequest 上传，Continue</li><li>下载证书，双击之，重启 Xcode 即可</li></ol></li></ol><p>如果还提示 Mac Installer 有问题，就在网页 certificates 一栏里删除旧的。到 Xcode 的账号管理的 Manage Certificates 里确定旧的已删除，然后重启 Xcode。再次上传 Mac app 时会提示生成新的 p12 证书</p>]]></content:encoded></item><item><guid isPermaLink="true">https://nixzhu.dev/posts/introducing-ducky</guid><title>Introducing Ducky</title><description>Ducky is a document-based app that helps you infer models from JSON to save your time.</description><link>https://nixzhu.dev/posts/introducing-ducky</link><pubDate>Thu, 19 Nov 2020 09:41:00 +0800</pubDate><content:encoded><![CDATA[<h1>Introducing Ducky</h1><h2>Overview</h2><p>Ducky is a document-based app that helps you infer models from <strong>JSON</strong> to save your time.</p><ul><li>It can infer <strong>JSON Schema,</strong> <strong>Swift</strong>, <strong>Kotlin</strong>, <strong>Dart(Null Safe)</strong>, <strong>Go</strong> or <strong>Proto</strong> models.</li><li>It provides many options for you to customize the model.</li></ul><p>In short, it's a model type generator for JSON.</p><p>Ducky is build with <strong>SwiftUI</strong>, runs on iOS/iPadOS 14 or macOS 11 Big Sur.</p><img src="https://nixzhu.dev/images/introducing-ducky/overview.jpg" alt="Overview"/><p>If you work with RESTful APIs, Ducky should save you a lot of time building the model layer.</p><p>Get it on the <a href="https://apps.apple.com/us/app/ducky-model-editor/id1525505933">App Store</a>. If the link doesn't work, try searching for <strong>ducky model editor</strong> in the App Store.</p><h2>Examples</h2><p>There is a JSON that represents a post as follow.</p><pre><code><span class="hljs-punctuation">{</span>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>NIX ZHU</title><description>I'm NIX. An app developer.</description><link>https://nixzhu.dev</link><language>en</language><lastBuildDate>Tue, 3 May 2022 09:33:37 +0800</lastBuildDate><pubDate>Tue, 3 May 2022 09:33:37 +0800</pubDate><ttl>250</ttl><atom:link href="https://nixzhu.dev/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://nixzhu.dev/notes/mac-apps</guid><title>作为 App 开发者会先安装的 Mac App</title><description>都是常用 App，久经考验</description><link>https://nixzhu.dev/notes/mac-apps</link><pubDate>Sun, 1 May 2022 09:41:00 +0800</pubDate><content:encoded><![CDATA[<h1>作为 App 开发者会先安装的 Mac App</h1><h2>翻墙</h2><ul><li><a href="https://github.com/yichengchen/clashX">ClashX</a>，不论是作为开发者还是作为一个普通人，我们都需要完整的互联网，希望有一天我们不再需要它</li></ul><h2>开发</h2><ul><li><a href="https://developer.apple.com/xcode/">Xcode</a>，作为 App 开发者，必须安装的工具。当然，有经验的开发者不会从 Mac App Store 下载，而是从网站下载，除了安装过程更可控，也方便多版本共存。此外，我不信任任何第三方下载方式</li><li><a href="https://git-fork.com">Fork</a>，Git 客户端。虽然日常也在命令行中使用 Git（开分支或做合并），有时也直接在 Xcode 中 commit，但有个 GUI 客户端仍然比较方便（切分支或查看代码）</li><li><a href="https://apps.apple.com/us/app/a-companion-for-swiftui/id1485436674">A Companion for SwiftUI</a>，如其名字所示，可帮你探索、学习 SwiftUI，省去许多查找其用法的时间</li><li><a href="https://apps.apple.com/us/app/ducky-model-editor/id1525505933">Ducky</a>，帮助开发者从 JSON 推断出多种语言的模型以节省时间，还提供许多实用的选项（由本人开发）</li><li><a href="https://github.com/nicklockwood/SwiftFormat">SwiftFormat for Xcode</a>，提供一个 Xcode 的源代码编辑器扩展。在 Xcode 中设置好快捷键后，能在编写 Swift 代码时更好地格式化</li><li><a href="https://apps.apple.com/us/app/system-color-picker/id1545870783">System Color Picker</a>，简单的颜色提取工具，支持多种输出格式，比系统自带的好用</li><li><a href="https://apps.apple.com/us/app/boop/id1518425043">Boop</a>，帮助处理或转换文本的工具，开发者才懂</li></ul><h2>文字处理</h2><ul><li><a href="https://typora.io">Typora</a>，Markdown 编辑器，主要用来写文档。有所见即所得模式，也有源码模式，还有很好的快捷键支持，写起来很舒服</li></ul><h2>社交</h2><ul><li><a href="https://apps.apple.com/us/app/twitter/id1482454543">Twitter</a>，普通人也有“鸣叫”的权力，还能帮你认识全世界各领域有趣的人</li></ul>]]></content:encoded></item><item><guid isPermaLink="true">https://nixzhu.dev/notes/resolve-package-dependencies-in-terminal</guid><title>在终端里解决 Swift 包依赖</title><description>Xcode 不走系统代理，若遇到 Swift Package 拉取失败，可通过命令行解决</description><link>https://nixzhu.dev/notes/resolve-package-dependencies-in-terminal</link><pubDate>Tue, 21 Dec 2021 09:41:00 +0800</pubDate><content:encoded><![CDATA[<h1>在终端里解决 Swift 包依赖</h1><p>因为沦陷区的互联网受限，Xcode 可能无法正常拉取来自 GitHub 的 Swift Package。由于 Xcode 不走系统代理，我们只能使用命令行解决：</p><ol><li>关闭 Xcode</li></ol><ol start="2"><li>终端启用代理（此处使用 ClashX 提供的命令，请根据你的情况调整）</li></ol><p><code>export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890</code></p><ol start="3"><li>进入 Xcode 工程所在目录，然后使用系统的源码管理工具解决包依赖（如此代理才能干预）</li></ol><p><code>xcodebuild -resolvePackageDependencies -scmProvider system</code></p><ol start="4"><li>再打开对应的 Xcode 工程</li></ol><p>此方法可处理普通的 Xcode 工程，也可以处理单纯的 Swift Package 的依赖</p>]]></content:encoded></item><item><guid isPermaLink="true">https://nixzhu.dev/notes/swiftformat-for-xcode</guid><title>通过快捷键在 Xcode 中使用 SwiftFormat</title><description>SwiftFormat 有一个 Xcode Source Editor Extension，在我们定义好快捷键的情况下，在 Xcode 内使用的体验很不错</description><link>https://nixzhu.dev/notes/swiftformat-for-xcode</link><pubDate>Tue, 19 Oct 2021 09:41:00 +0800</pubDate><content:encoded><![CDATA[<h1>通过快捷键在 Xcode 中使用 SwiftFormat</h1><h2>安装</h2><p>步骤如下：</p><ol><li>安装 <strong>SwiftFormat for Xcode.app</strong>。可直接去其 GitHub 仓库<a href="https://github.com/nicklockwood/SwiftFormat/releases">下载安装</a>。如果你使用 Homebrew，也可<a href="https://github.com/nicklockwood/SwiftFormat#xcode-source-editor-extension">参考其介绍以安装</a>。装好后记得打开一下此应用，确保有权限使用</li><li>安装此 app 提供的 Xcode Source Editor Extension：<ol><li>点击状态栏左上角的 ，打开<strong>系统偏好设置</strong>，选择<strong>扩展</strong></li><li>找到并选中 <strong>Xcode Source Editor</strong>，然后右边勾选 <strong>SwiftFormat</strong></li><li>重新启动一下 Xcode，然后检查 Xcode 的 Editor 菜单底部，应该会出现 <strong>SwiftFormat</strong> 菜单</li><li>设置针对当前文件的快捷键：</li><li>从 Xcode 的菜单打开 <strong>Preferences...</strong>，选中 <strong>Key Bindings</strong></li><li>在右上的 Filter 里输入 <strong>swiftformat</strong>，然后选中第二个 <strong>SwiftFormat &gt; Format File</strong></li><li>双击高亮行对应 Key 的位置，然后同时按下键盘上的 <strong>Shift</strong> + <strong>Ctrl</strong> + <strong>I</strong>（如果你喜欢其它快捷键可自行选择）</li></ol></li></ol><p>经过上述步骤，我们就给 Xcode 安装好了 SwiftFormat 的 Source Editor Extension，而且可以用快捷键触发。现在你可以在 Xcode 里随意选中一个 Swift 文件，然后按下快捷键 <strong>Shift</strong> + <strong>Ctrl</strong> + <strong>I</strong>，SwiftFormat 就会根据它当前的规则对这个被选中的 Swift 文件进行代码风格的格式化。如果你的代码经过 Git 管理，应该能看到格式化前后的差异，比如一些空行、逗号、缩进之类</p><p>在实践上，比如你在做某个功能，修改了某些 Swift 文件，那就在改动这些文件后，按下快捷键 <strong>Shift</strong> + <strong>Ctrl</strong> + <strong>I</strong> 来格式化代码（必要时再手动做一些微调）。以此，可以循序渐进地改善整体代码的风格</p><h2>配置</h2><p>刚才提到<strong>规则</strong>，你可以打开 <strong>SwiftFormat for Xcode.app</strong> ，选中第二个 <strong>Rules</strong> Tab 进行调整</p><p>取消勾选 <strong>Infer Options Automatically</strong>，这样的话我们可以搜索并<strong>调整</strong>一些选项的参数，例如：</p><ul><li>勾选 <strong>acronyms</strong>，保持 <strong>Acronyms</strong> 其值为 <strong>ID,URL,UUID,VC</strong>，这样一些属性命名中的缩略词会被自动“纠正”，以符合 <a href="https://github.com/SketchK/the-swift-api-design-guidelines-in-chinese/blob/master/README.md">Swift 的 API 设计指南</a></li></ul><ul><li>勾选 <strong>blankLinesBetweenImports</strong>，会移除 import 语句之间的空行</li></ul><ul><li>勾选 <strong>blockComments</strong>，自动将注释换成 <strong>//</strong> 或 <strong>///</strong> 风格</li></ul><ul><li><strong>extensionAccessControl</strong>。将其 <strong>Extension Access Control Level Placement</strong> 改为 <strong>on-declarations</strong>，以将访问控制定义在具体的属性或方法上</li></ul><ul><li><strong>fileHeader</strong>。将其 <strong>Header</strong> 改为 <strong>strip</strong>，以去除头部的文件注释</li></ul><ul><li><strong>hoistPatternLet</strong>。将其 <strong>Pattern Let</strong> 改为 <strong>inline</strong>，以符合 <a href="https://pages.swift.gg/google-swift-style-guide-in-chinese/">Google 的规范</a></li></ul><ul><li><strong>indent</strong>。将其 <strong>Ifdef Indent</strong> 改为 <strong>no-indent</strong>；<strong>Indent Strings</strong> 改为 <strong>true</strong></li></ul><ul><li><strong>modifierOrder</strong>。将其 <strong>Modifier Oder</strong> 改为 <strong>final,open,public,fileprivate,private,private(set),override,convenience,lazy,static,weak</strong>，如果你不喜欢这个顺序可自行调整</li></ul><ul><li><strong>spaceAroundOperators</strong>。将其 <strong>Ranges</strong> 改为 <strong>no-space</strong>，这样 <strong>...</strong> 和 <strong>..&lt;</strong> 操作符前后的空格会被去除</li></ul><ul><li><strong>unusedArguments</strong>。将其 <strong>Strip Unused Arguments</strong> 改为 <strong>closure-only</strong>，防止一些方法的实参被替换为下划线</li></ul><ul><li><strong>wrap</strong>。将其 <strong>Max Width</strong> 改为 <strong>100</strong>，这样太长的代码会被折行</li></ul><ul><li>针对 <strong>wrapArguments</strong>，将其<ul><li><strong>Wrap Arguments</strong> 改为 <strong>before-first</strong></li><li><strong>Wrap Collections</strong> 改为 <strong>before-first</strong></li><li><strong>Wrap Conditions</strong> 改为 <strong>preserve</strong></li><li><strong>Wrap Parameters</strong> 改为 <strong>before-first</strong></li><li><strong>Wrap Return Type</strong> 改为 <strong>preserve</strong></li><li><strong>Wrap Typealiases</strong> 改为 <strong>preserve</strong></li></ul></li></ul><p><strong>Swift version</strong> 选择 <strong>5.5</strong>（目前 app v0.49.7 所支持的最高 Swift 版本）。</p><p>可搜索并<strong>关闭</strong>如下规则：</p><ul><li><strong>markTypes</strong>。开启的话，会强制你写一些 <strong>// MARK:</strong> 标记</li><li><strong>organizeDeclarations</strong>。开启的话，会按照更细致的规则对各种声明进行排序，可能不是你所希望的</li><li><strong>sortedImports</strong>。开启的话，会将 import 的语句按照字母表排序</li><li><strong>sortedSwitchCases</strong>。开启的话，会将 switch 的 case 语句按照字母表排序</li><li><strong>wrapSwitchCases</strong>。开启的话，会强制 switch 时每个 case 单独一行</li></ul><p>可进一步参考详细的<a href="https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md">规则文档</a></p><h2>小技巧</h2><p>如果你想将有多个参数的函数的参数进行折行，只需先将其尾部的括号换行（可在输入最后一个参数后进行），然后按下快捷键（比一个个手动换行要快不少）</p>]]></content:encoded></item><item><guid isPermaLink="true">https://nixzhu.dev/notes/new-apple-distrubution-certificate</guid><title>新的 Apple 分发证书</title><description>生成新的分发证书，以提交 App 到 App Store</description><link>https://nixzhu.dev/notes/new-apple-distrubution-certificate</link><pubDate>Sat, 31 Jul 2021 09:41:00 +0800</pubDate><content:encoded><![CDATA[<h1>新的 Apple 分发证书</h1><p>如果你在新 Mac 上遇到无法提交 App 到 App Store 的问题（参考 <a href="https://daddycoding.com/2020/07/22/missing-private-key/">Missing Private Key</a>）</p><ol><li>打开<strong>钥匙串访问</strong>，菜单选择<strong>证书助理</strong> -&gt; <strong>从证书颁发机构请求证书…</strong></li><li>填入常用电子邮件和昵称，存储到磁盘，得到 <strong>CertificateSigningRequest.certSigningRequest</strong></li><li>到<a href="https://developer.apple.com/account/resources/certificates/add">这里</a>去 <strong>Create a New Certificate</strong><ol><li>选择 Apple Distrubution，Continue</li><li>Choose File，将之前得到的 CertificateSigningRequest.certSigningRequest 上传，Continue</li><li>下载证书，双击之，重启 Xcode 即可</li></ol></li></ol><p>如果还提示 Mac Installer 有问题，就在网页 certificates 一栏里删除旧的。到 Xcode 的账号管理的 Manage Certificates 里确定旧的已删除，然后重启 Xcode。再次上传 Mac app 时会提示生成新的 p12 证书</p>]]></content:encoded></item><item><guid isPermaLink="true">https://nixzhu.dev/posts/introducing-ducky</guid><title>Introducing Ducky</title><description>Ducky is a document-based app that helps you infer models from JSON to save your time.</description><link>https://nixzhu.dev/posts/introducing-ducky</link><pubDate>Thu, 19 Nov 2020 09:41:00 +0800</pubDate><content:encoded><![CDATA[<h1>Introducing Ducky</h1><h2>Overview</h2><p>Ducky is a document-based app that helps you infer models from <strong>JSON</strong> to save your time.</p><ul><li>It can infer <strong>JSON Schema,</strong> <strong>Swift</strong>, <strong>Kotlin</strong>, <strong>Dart(Null Safe)</strong>, <strong>Go</strong> or <strong>Proto</strong> models.</li><li>It provides many options for you to customize the model.</li></ul><p>In short, it's a model type generator for JSON.</p><p>Ducky is build with <strong>SwiftUI</strong>, runs on iOS/iPadOS 14 or macOS 11 Big Sur.</p><img src="https://nixzhu.dev/images/introducing-ducky/overview.jpg" alt="Overview"/><p>If you work with RESTful APIs, Ducky should save you a lot of time building the model layer.</p><p>Get it on the <a href="https://apps.apple.com/us/app/ducky-model-editor/id1525505933">App Store</a>. If the link doesn't work, try searching for <strong>ducky model editor</strong> in the App Store.</p><h2>Examples</h2><p>There is a JSON that represents a post as follow:</p><pre><code><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Test&quot;</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;created_at&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2020-11-18T18:25:43.511Z&quot;</span>
-<span class="hljs-punctuation">}</span></code></pre><p>If you choose <strong>Swift</strong> as <strong>Output Type</strong>, set <strong>Model Name</strong> to <strong>Post</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
-
-<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
-  <span class="hljs-keyword">let</span> id: <span class="hljs-type">Int</span>
-  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
-  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
-
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
-    <span class="hljs-keyword">case</span> id
-    <span class="hljs-keyword">case</span> title
-    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
-  }
-}</code></pre><p>Note that, by default, the <strong>id</strong> is inferred as <strong>Int</strong>, the <strong>title</strong> is inferred as <strong>String</strong>, the <strong>created_at</strong> is inferred as <strong>Date</strong>. Also note that <strong>created_at</strong> is mapped to <strong>createdAt</strong>.</p><p>If you want to change the property's type, for example, infer id as UInt64, you can do that by <strong>Type Name Maps</strong>. Just add a rule: <strong>id</strong> for the Path, <strong>UInt64</strong> for the Name. Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
-
-<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
-  <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
-  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
-  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
-
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
-    <span class="hljs-keyword">case</span> id
-    <span class="hljs-keyword">case</span> title
-    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
-  }
-}</code></pre><p>If you check <strong>Needs Initializer</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
-
-<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
-  <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
-  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
-  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
-
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
-    <span class="hljs-keyword">case</span> id
-    <span class="hljs-keyword">case</span> title
-    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
-  }
-
-  <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">title</span>: <span class="hljs-type">String</span>, <span class="hljs-params">createdAt</span>: <span class="hljs-type">Date</span>) {
-    <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
-    <span class="hljs-keyword">self</span>.title <span class="hljs-operator">=</span> title
-    <span class="hljs-keyword">self</span>.createdAt <span class="hljs-operator">=</span> createdAt
-  }
-}</code></pre><h3>How about nested JSON?</h3><p>We give the post a creator as follow.</p><pre><code><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
-  <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Test&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Hello&quot;</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;created_at&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2020-11-18T18:25:43.511Z&quot;</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;creator&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
     <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">42</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nixzhu&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nixzhu&quot;</span><span class="hljs-punctuation">,</span>
     <span class="hljs-attr">&quot;avatar_url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://avatar.com/nixzhu.png&quot;</span>
   <span class="hljs-punctuation">}</span>
-<span class="hljs-punctuation">}</span></code></pre><p>And we add another <strong>Type Name Maps</strong> rule: <strong>creator</strong> for the Path, <strong>User</strong> for the Name. Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+<span class="hljs-punctuation">}</span></code></pre><p>If you choose <strong>Swift</strong> as <strong>Output Type</strong>, set <strong>Model Name</strong> to <strong>Post</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
-  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">User</span>: <span class="hljs-title class_">Codable</span> {
-    <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
-    <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Creator</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">let</span> id: <span class="hljs-type">Int</span>
+    <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
     <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
       <span class="hljs-keyword">case</span> id
-      <span class="hljs-keyword">case</span> name
+      <span class="hljs-keyword">case</span> username
+      <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
+    }
+  }
+
+  <span class="hljs-keyword">let</span> id: <span class="hljs-type">Int</span>
+  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
+  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
+  <span class="hljs-keyword">let</span> creator: <span class="hljs-type">Creator</span>
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+    <span class="hljs-keyword">case</span> id
+    <span class="hljs-keyword">case</span> title
+    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
+    <span class="hljs-keyword">case</span> creator
+  }
+}</code></pre><p>Note that, by default, the <strong>id</strong> is inferred as <strong>Int</strong>, the <strong>title</strong> is inferred as <strong>String</strong>, the <strong>created_at</strong> is inferred as <strong>Date</strong> and mapped to <strong>createdAt</strong>, the <strong>avatar_url</strong> is inferred as <strong>URL</strong> and mapped to <strong>avatarURL</strong>.</p><p>If you want to change the property's type, for example, infer <strong>id</strong> as <strong>UInt64</strong>, you can do that with <strong>Type Name Maps</strong>. Just add a rule: <strong>id</strong> for the <strong>Path</strong>, <strong>UInt64</strong> for the <strong>Name</strong>. Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Creator</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
+    <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+      <span class="hljs-keyword">case</span> id
+      <span class="hljs-keyword">case</span> username
+      <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
+    }
+  }
+
+  <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
+  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
+  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
+  <span class="hljs-keyword">let</span> creator: <span class="hljs-type">Creator</span>
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+    <span class="hljs-keyword">case</span> id
+    <span class="hljs-keyword">case</span> title
+    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
+    <span class="hljs-keyword">case</span> creator
+  }
+}</code></pre><p>Note that both <strong>Post's id</strong> and <strong>Creator's id</strong> are inferred as <strong>UInt64</strong>, if you only needs one be inferred as <strong>UInt64</strong>, modify the <strong>Path</strong> to <strong>Post.id</strong> or <strong>creator.id</strong> or <strong>Post.creator.id</strong>, that's how <strong>Path</strong> works.</p><p>If you check <strong>Needs Initializer</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Creator</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
+    <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+      <span class="hljs-keyword">case</span> id
+      <span class="hljs-keyword">case</span> username
       <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
     }
 
-    <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">name</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
+    <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">username</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
       <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
-      <span class="hljs-keyword">self</span>.name <span class="hljs-operator">=</span> name
+      <span class="hljs-keyword">self</span>.username <span class="hljs-operator">=</span> username
+      <span class="hljs-keyword">self</span>.avatarURL <span class="hljs-operator">=</span> avatarURL
+    }
+  }
+
+  <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
+  <span class="hljs-keyword">let</span> title: <span class="hljs-type">String</span>
+  <span class="hljs-keyword">let</span> createdAt: <span class="hljs-type">Date</span>
+  <span class="hljs-keyword">let</span> creator: <span class="hljs-type">Creator</span>
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+    <span class="hljs-keyword">case</span> id
+    <span class="hljs-keyword">case</span> title
+    <span class="hljs-keyword">case</span> createdAt <span class="hljs-operator">=</span> <span class="hljs-string">&quot;created_at&quot;</span>
+    <span class="hljs-keyword">case</span> creator
+  }
+
+  <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">title</span>: <span class="hljs-type">String</span>, <span class="hljs-params">createdAt</span>: <span class="hljs-type">Date</span>, <span class="hljs-params">creator</span>: <span class="hljs-type">Creator</span>) {
+    <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
+    <span class="hljs-keyword">self</span>.title <span class="hljs-operator">=</span> title
+    <span class="hljs-keyword">self</span>.createdAt <span class="hljs-operator">=</span> createdAt
+    <span class="hljs-keyword">self</span>.creator <span class="hljs-operator">=</span> creator
+  }
+}</code></pre><p>And we add another <strong>Type Name Maps</strong> rule: <strong>creator</strong> or <strong>Post.creator</strong> for the <strong>Path</strong>, <strong>User</strong> for the <strong>Name</strong>. Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">User</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
+    <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
+      <span class="hljs-keyword">case</span> id
+      <span class="hljs-keyword">case</span> username
+      <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
+    }
+
+    <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">username</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
+      <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
+      <span class="hljs-keyword">self</span>.username <span class="hljs-operator">=</span> username
       <span class="hljs-keyword">self</span>.avatarURL <span class="hljs-operator">=</span> avatarURL
     }
   }
@@ -92,7 +137,7 @@
     <span class="hljs-keyword">self</span>.createdAt <span class="hljs-operator">=</span> createdAt
     <span class="hljs-keyword">self</span>.creator <span class="hljs-operator">=</span> creator
   }
-}</code></pre><p>Note that we have a nested <strong>User</strong> inside the <strong>Post</strong>. Also Note that the <strong>avatar_url</strong> is inferred as <strong>URL</strong>, and is mapped to <strong>avatarURL</strong>.</p><p>If you don't like the <strong>Nested</strong> structure. You can change the <strong>Structure Style</strong> to <strong>Extended</strong> or <strong>Flat</strong>.</p><p>If you choose <strong>Extended</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+}</code></pre><p>If you don't like the <strong>Nested</strong> structure. You can change the <strong>Structure Style</strong> to <strong>Extended</strong> or <strong>Flat</strong>.</p><p>If you choose <strong>Extended</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
   <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
@@ -118,22 +163,22 @@
 <span class="hljs-keyword">extension</span> <span class="hljs-title class_">Post</span> {
   <span class="hljs-keyword">struct</span> <span class="hljs-title class_">User</span>: <span class="hljs-title class_">Codable</span> {
     <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
-    <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
     <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
 
     <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
       <span class="hljs-keyword">case</span> id
-      <span class="hljs-keyword">case</span> name
+      <span class="hljs-keyword">case</span> username
       <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
     }
 
-    <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">name</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
+    <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">username</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
       <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
-      <span class="hljs-keyword">self</span>.name <span class="hljs-operator">=</span> name
+      <span class="hljs-keyword">self</span>.username <span class="hljs-operator">=</span> username
       <span class="hljs-keyword">self</span>.avatarURL <span class="hljs-operator">=</span> avatarURL
     }
   }
-}</code></pre><p>If you choose <strong>Flat</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+}</code></pre><p>If you choose <strong>Flat</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Post</span>: <span class="hljs-title class_">Codable</span> {
   <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
@@ -158,21 +203,73 @@
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">User</span>: <span class="hljs-title class_">Codable</span> {
   <span class="hljs-keyword">let</span> id: <span class="hljs-type">UInt64</span>
-  <span class="hljs-keyword">let</span> name: <span class="hljs-type">String</span>
+  <span class="hljs-keyword">let</span> username: <span class="hljs-type">String</span>
   <span class="hljs-keyword">let</span> avatarURL: <span class="hljs-type">URL</span>
 
   <span class="hljs-keyword">private</span> <span class="hljs-keyword">enum</span> <span class="hljs-title class_">CodingKeys</span>: <span class="hljs-title class_">String</span>, <span class="hljs-title class_">CodingKey</span> {
     <span class="hljs-keyword">case</span> id
-    <span class="hljs-keyword">case</span> name
+    <span class="hljs-keyword">case</span> username
     <span class="hljs-keyword">case</span> avatarURL <span class="hljs-operator">=</span> <span class="hljs-string">&quot;avatar_url&quot;</span>
   }
 
-  <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">name</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
+  <span class="hljs-keyword">init</span>(<span class="hljs-params">id</span>: <span class="hljs-type">UInt64</span>, <span class="hljs-params">username</span>: <span class="hljs-type">String</span>, <span class="hljs-params">avatarURL</span>: <span class="hljs-type">URL</span>) {
     <span class="hljs-keyword">self</span>.id <span class="hljs-operator">=</span> id
-    <span class="hljs-keyword">self</span>.name <span class="hljs-operator">=</span> name
+    <span class="hljs-keyword">self</span>.username <span class="hljs-operator">=</span> username
     <span class="hljs-keyword">self</span>.avatarURL <span class="hljs-operator">=</span> avatarURL
   }
-}</code></pre><h3>How about array in JSON?</h3><p>There is a JSON that represents a library's books as follow.</p><pre><code><span class="hljs-punctuation">{</span>
+}</code></pre><h3>How about Object as Dictionary?</h3><p>Give a JSON as follow:</p><pre><code>{
+  <span class="hljs-string">&quot;countries&quot;</span>: {
+    <span class="hljs-string">&quot;china&quot;</span>: {
+      <span class="hljs-string">&quot;population&quot;</span>: <span class="hljs-string">&quot;1,412,600,000&quot;</span>,
+      <span class="hljs-string">&quot;market&quot;</span>: {
+        <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">8964</span>
+      }
+    },
+    <span class="hljs-string">&quot;usa&quot;</span>: {
+      <span class="hljs-string">&quot;population&quot;</span>: <span class="hljs-string">&quot;332,580,125&quot;</span>,
+      <span class="hljs-string">&quot;freedomOfSpeech&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;market&quot;</span>: {
+        <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-number">100000</span>,
+        <span class="hljs-string">&quot;companies&quot;</span>: [
+          <span class="hljs-string">&quot;Apple&quot;</span>,
+          <span class="hljs-string">&quot;Microsoft&quot;</span>,
+          <span class="hljs-string">&quot;Amazon&quot;</span>,
+          <span class="hljs-string">&quot;Alphabet&quot;</span>
+        ]
+      }
+    }
+  }
+}</code></pre><p>Set <strong>Model Name</strong> to <strong>World</strong>, by default, the <strong>countries</strong> will be inferred as a <strong>struct</strong>. But with the <strong>Object As Dictionary</strong> option, add a rule: <strong>countries</strong> for the <strong>Path</strong>, it will be inferred as a <strong>Dictionary</strong>.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">World</span>: <span class="hljs-title class_">Codable</span> {
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">China</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Market</span>: <span class="hljs-title class_">Codable</span> {
+      <span class="hljs-keyword">let</span> value: <span class="hljs-type">Int</span>
+      <span class="hljs-keyword">let</span> companies: [<span class="hljs-type">String</span>]<span class="hljs-operator">?</span>
+    }
+
+    <span class="hljs-keyword">let</span> population: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> market: <span class="hljs-type">Market</span>
+    <span class="hljs-keyword">let</span> freedomOfSpeech: <span class="hljs-type">Bool</span>?
+  }
+
+  <span class="hljs-keyword">let</span> countries: [<span class="hljs-type">String</span>: <span class="hljs-type">China</span>]
+}</code></pre><p>Note that, the <strong>Dictionary's value type</strong> is <strong>China</strong> (It merged with <strong>china</strong> and <strong>usa</strong>) , we can modify it with <strong>Type Name Maps</strong>, add a rule: <strong>china</strong> for the <strong>Path</strong>, <strong>Country</strong> for the <strong>Name</strong>, then we have:</p><pre><code><span class="hljs-keyword">import</span> Foundation
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">World</span>: <span class="hljs-title class_">Codable</span> {
+  <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Country</span>: <span class="hljs-title class_">Codable</span> {
+    <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Market</span>: <span class="hljs-title class_">Codable</span> {
+      <span class="hljs-keyword">let</span> value: <span class="hljs-type">Int</span>
+      <span class="hljs-keyword">let</span> companies: [<span class="hljs-type">String</span>]<span class="hljs-operator">?</span>
+    }
+
+    <span class="hljs-keyword">let</span> population: <span class="hljs-type">String</span>
+    <span class="hljs-keyword">let</span> market: <span class="hljs-type">Market</span>
+    <span class="hljs-keyword">let</span> freedomOfSpeech: <span class="hljs-type">Bool</span>?
+  }
+
+  <span class="hljs-keyword">let</span> countries: [<span class="hljs-type">String</span>: <span class="hljs-type">Country</span>]
+}</code></pre><p>Looks good, right?</p><h3>How about array in JSON?</h3><p>There is a JSON that represents a library's books as follow:</p><pre><code><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">&quot;books&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
     <span class="hljs-punctuation">{</span>
       <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
@@ -185,7 +282,7 @@
       <span class="hljs-attr">&quot;author&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot; Bjarne Stroustrup&quot;</span>
     <span class="hljs-punctuation">}</span>
   <span class="hljs-punctuation">]</span>
-<span class="hljs-punctuation">}</span></code></pre><p>If we set <strong>Model Name</strong> to <strong>Library</strong>. Add a <strong>Type Name Maps</strong> rule: <strong>books</strong> for the Path, <strong>Book</strong> for the Name. And add a <strong>Property Enum Maps</strong> rule: <strong>language</strong> for the Path, and three cases: <strong>c|C</strong>, <strong>cpp|C++</strong>, <strong>swift|Swift</strong>. Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+<span class="hljs-punctuation">}</span></code></pre><p>If we set <strong>Model Name</strong> to <strong>Library</strong>. Add a <strong>Type Name Maps</strong> rule: <strong>books</strong> for the <strong>Path</strong>, <strong>Book</strong> for the <strong>Name</strong>. And add a <strong>Property Enum Maps</strong> rule: <strong>language</strong> for the <strong>Path</strong>, and three cases: <strong>c</strong>|<strong>C</strong>, <strong>cpp</strong>|<strong>C++</strong>, <strong>swift</strong>|<strong>Swift</strong>. Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Library</span>: <span class="hljs-title class_">Codable</span> {
   <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Book</span>: <span class="hljs-title class_">Codable</span> {
@@ -201,7 +298,7 @@
   }
 
   <span class="hljs-keyword">let</span> books: [<span class="hljs-type">Book</span>]
-}</code></pre><p>If you check <strong>All Properties Optional</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> Foundation
+}</code></pre><p>If you check <strong>All Properties Optional</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> Foundation
 
 <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Library</span>: <span class="hljs-title class_">Codable</span> {
   <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Book</span>: <span class="hljs-title class_">Codable</span> {
@@ -217,7 +314,7 @@
   }
 
   <span class="hljs-keyword">let</span> books: [<span class="hljs-type">Book</span>]<span class="hljs-operator">?</span>
-}</code></pre><p>There are other options, just try it.</p><h3>How about Kotlin, Dart and Go models?</h3><p>Give a JSON as follow.</p><pre><code><span class="hljs-punctuation">{</span>
+}</code></pre><p>There are other options, just try it.</p><h3>How about Kotlin, Dart and Go models?</h3><p>Give a JSON as follow:</p><pre><code><span class="hljs-punctuation">{</span>
   <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;title&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Hello World&quot;</span><span class="hljs-punctuation">,</span>
   <span class="hljs-attr">&quot;body&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;I&#x27;m Ducky, help you infer models from JSON.&quot;</span><span class="hljs-punctuation">,</span>
@@ -231,7 +328,7 @@
     <span class="hljs-attr">&quot;username&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nixzhu&quot;</span><span class="hljs-punctuation">,</span>
     <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;zhuhongxu@gmail.com&quot;</span>
   <span class="hljs-punctuation">}</span>
-<span class="hljs-punctuation">}</span></code></pre><p>If you choose <strong>Kotlin</strong> as <strong>Output Type</strong>, set <strong>Model Name</strong> to <strong>Hello</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">package</span> ducky
+<span class="hljs-punctuation">}</span></code></pre><p>If you choose <strong>Kotlin</strong> as <strong>Output Type</strong>, set <strong>Model Name</strong> to <strong>Hello</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">package</span> ducky
 
 <span class="hljs-keyword">import</span> kotlinx.serialization.*
 <span class="hljs-keyword">import</span> kotlinx.serialization.json.*
@@ -250,7 +347,7 @@
     <span class="hljs-keyword">val</span> username: String,
     <span class="hljs-keyword">val</span> email: String
   )
-}</code></pre><p>If you change the <strong>Structure Style</strong> to <strong>Flat</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">package</span> ducky
+}</code></pre><p>If you change the <strong>Structure Style</strong> to <strong>Flat</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">package</span> ducky
 
 <span class="hljs-keyword">import</span> kotlinx.serialization.*
 <span class="hljs-keyword">import</span> kotlinx.serialization.json.*
@@ -269,7 +366,7 @@
 <span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Developer</span> </span>(
   <span class="hljs-keyword">val</span> username: String,
   <span class="hljs-keyword">val</span> email: String
-)</code></pre><p>If you choose <strong>Dart</strong> as <strong>Output Type</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:meta/meta.dart&#x27;</span>;
+)</code></pre><p>If you choose <strong>Dart</strong> as <strong>Output Type</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:meta/meta.dart&#x27;</span>;
 <span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;dart:convert&#x27;</span>;
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hello</span> </span>{
@@ -322,7 +419,7 @@
     <span class="hljs-string">&quot;username&quot;</span>: username,
     <span class="hljs-string">&quot;email&quot;</span>: email,
   };
-}</code></pre><p>If you choose <strong>Go</strong> as <strong>Output Type</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">package</span> main
+}</code></pre><p>If you choose <strong>Go</strong> as <strong>Output Type</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">type</span> Hello <span class="hljs-keyword">struct</span> {
   ID <span class="hljs-type">int</span> <span class="hljs-string">`json:&quot;id&quot;`</span>
@@ -333,7 +430,7 @@
     Username <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;username&quot;`</span>
     Email <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;email&quot;`</span>
   } <span class="hljs-string">`json:&quot;developer&quot;`</span>
-}</code></pre><p>If you change the <strong>Structure Style</strong> to <strong>Flat</strong>, Ducky will infer it as follow.</p><pre><code><span class="hljs-keyword">package</span> main
+}</code></pre><p>If you change the <strong>Structure Style</strong> to <strong>Flat</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">type</span> Hello <span class="hljs-keyword">struct</span> {
   ID <span class="hljs-type">int</span> <span class="hljs-string">`json:&quot;id&quot;`</span>

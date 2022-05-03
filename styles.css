@@ -189,9 +189,6 @@ p code {
 }
 
 pre {
-    border-left: 1px solid;
-    border-left-color: #eee;
-    padding-left: 10px;
     margin-bottom: 10px;
 }
 
