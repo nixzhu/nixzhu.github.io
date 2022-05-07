@@ -183,12 +183,16 @@ footer {
 
 p code {
     display: block;
+    background-color: #f6f8fa;
     padding: 10px;
+    border-radius: 5px;
     margin-left: 20px;
-    background-color: #eee;
 }
 
 pre {
+    background-color: #f6f8fa;
+    padding: 10px;
+    border-radius: 5px;
     margin-bottom: 10px;
 }
 
@@ -219,11 +223,11 @@ pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5p
     }
 
     p code {
-        background-color: #333;
+        background-color: #171a23;
     }
 
     pre {
-        border-left-color: #333;
+        background-color: #171a23;
     }
 
     pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}/*!
