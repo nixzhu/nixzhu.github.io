@@ -335,7 +335,7 @@
 <span class="hljs-keyword">import</span> kotlinx.serialization.<span class="hljs-keyword">internal</span>.*
 
 <span class="hljs-meta">@Serializable</span>
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hello</span> </span>(
+<span class="hljs-keyword">data</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Hello</span> (
   <span class="hljs-keyword">val</span> id: <span class="hljs-built_in">Long</span>,
   <span class="hljs-keyword">val</span> title: String,
   <span class="hljs-keyword">val</span> body: String,
@@ -343,7 +343,7 @@
   <span class="hljs-keyword">val</span> developer: Developer
 ) {
   <span class="hljs-meta">@Serializable</span>
-  <span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Developer</span> </span>(
+  <span class="hljs-keyword">data</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Developer</span> (
     <span class="hljs-keyword">val</span> username: String,
     <span class="hljs-keyword">val</span> email: String
   )
@@ -354,7 +354,7 @@
 <span class="hljs-keyword">import</span> kotlinx.serialization.<span class="hljs-keyword">internal</span>.*
 
 <span class="hljs-meta">@Serializable</span>
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hello</span> </span>(
+<span class="hljs-keyword">data</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Hello</span> (
   <span class="hljs-keyword">val</span> id: <span class="hljs-built_in">Long</span>,
   <span class="hljs-keyword">val</span> title: String,
   <span class="hljs-keyword">val</span> body: String,
@@ -363,7 +363,7 @@
 )
 
 <span class="hljs-meta">@Serializable</span>
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Developer</span> </span>(
+<span class="hljs-keyword">data</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Developer</span> (
   <span class="hljs-keyword">val</span> username: String,
   <span class="hljs-keyword">val</span> email: String
 )</code></pre><p>If you choose <strong>Dart</strong> as <strong>Output Type</strong>, Ducky will infer it as follow:</p><pre><code><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;package:meta/meta.dart&#x27;</span>;
