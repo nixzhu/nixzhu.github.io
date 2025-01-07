@@ -1,17 +1,26 @@
---acronyms ID,URL,UUID,VC
+--acronyms GIF,HTML,ID,JPEG,JPG,JSON,PNG,SVG,UID,URL,UUID,VC
 --allman false
+--anonymousforeach convert
 --assetliterals visual-width
+--asynccapturing 
 --beforemarks 
 --binarygrouping 4,8
+--callsiteparen default
 --categorymark "MARK: %c"
 --classthreshold 0
 --closingparen balanced
 --closurevoid remove
 --commas always
+--complexattrs preserve
+--computedvarattrs preserve
+--condassignment after-property
 --conflictmarkers reject
+--dateformat system
 --decimalgrouping 3,6
+--doccomments before-declarations
 --elseposition same-line
 --emptybraces no-space
+--enumnamespaces always
 --enumthreshold 0
 --exponentcase lowercase
 --exponentgrouping disabled
@@ -21,6 +30,8 @@
 --fractiongrouping disabled
 --fragment false
 --funcattributes preserve
+--generictypes 
+--groupblanklines true
 --groupedextension "MARK: %c"
 --guardelse auto
 --header strip
@@ -31,6 +42,10 @@
 --indent 4
 --indentcase false
 --indentstrings true
+--inferredtypes always
+--initcodernil false
+--inlinedforeach ignore
+--languagemode 0
 --lifecycle 
 --lineaftermarks true
 --linebreaks lf
@@ -38,39 +53,56 @@
 --markextensions always
 --marktypes always
 --maxwidth 100
---modifierorder open,public,final,fileprivate,private,private(set),override,convenience,lazy,static,weak
---nevertrailing 
+--modifierorder open,public,fileprivate,private,final,private(set),override,convenience,lazy,static,weak
+--nevertrailing continue
+--nilinit remove
+--noncomplexattrs 
 --nospaceoperators 
 --nowrapoperators 
 --octalgrouping 4,8
 --operatorfunc spaced
+--organizationmode visibility
 --organizetypes actor,class,enum,struct
 --patternlet inline
+--preservedecls 
+--preservedsymbols Package
+--propertytypes infer-locals-only
 --ranges no-space
---redundanttype inferred
 --self remove
 --selfrequired 
 --semicolons inline
 --shortoptionals always
 --smarttabs enabled
+--someany true
+--sortedpatterns 
+--storedvarattrs preserve
 --stripunusedargs closure-only
 --structthreshold 0
---swiftversion 5.5
+--swiftversion 6.0
 --tabwidth unspecified
+--throwcapturing 
+--timezone system
 --trailingclosures 
 --trimwhitespace always
 --typeattributes preserve
+--typeblanklines remove
+--typedelimiter space-after
 --typemark "MARK: - %t"
---varattributes preserve
+--typemarks 
+--typeorder 
+--visibilitymarks 
+--visibilityorder 
 --voidtype void
 --wraparguments before-first
 --wrapcollections before-first
 --wrapconditions preserve
+--wrapeffects preserve
+--wrapenumcases always
 --wrapparameters before-first
 --wrapreturntype preserve
---wrapternary default
+--wrapternary before-operators
 --wraptypealiases before-first
 --xcodeindentation disabled
 --yodaswap always
---disable sortedImports
---enable acronyms,blankLinesBetweenImports,blockComments,isEmpty,wrapEnumCases
+--disable preferForLoop,preferKeyPath,sortDeclarations,sortImports,sortTypealiases,typeSugar
+--enable acronyms,blankLinesBetweenImports,blockComments,docComments,isEmpty,redundantProperty,wrapEnumCases
