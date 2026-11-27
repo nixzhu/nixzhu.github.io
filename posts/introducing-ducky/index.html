@@ -444,12 +444,12 @@
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hello</span> </span>{
   <span class="hljs-built_in">int</span> id;
-  <span class="hljs-built_in">String</span> title;
-  <span class="hljs-built_in">String</span> body;
-  <span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">String</span>&gt; outputTypes;
-  Developer developer;
+  <span class="hljs-title class_">String</span> title;
+  <span class="hljs-title class_">String</span> body;
+  <span class="hljs-title class_">List</span>&lt;<span class="hljs-title class_">String</span>&gt; outputTypes;
+  <span class="hljs-title class_">Developer</span> developer;
 
-  Hello({
+  <span class="hljs-title class_">Hello</span>({
     <span class="hljs-keyword">this</span>.id,
     <span class="hljs-keyword">this</span>.title,
     <span class="hljs-keyword">this</span>.body,
@@ -457,38 +457,38 @@
     <span class="hljs-keyword">this</span>.developer,
   });
 
-  <span class="hljs-keyword">factory</span> Hello.fromJSON(<span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-built_in">dynamic</span>&gt; json) =&gt; Hello(
+  <span class="hljs-keyword">factory</span> <span class="hljs-title class_">Hello</span>.<span class="hljs-title function_">fromJSON</span>(<span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-built_in">dynamic</span>&gt; json) =&gt; <span class="hljs-title class_">Hello</span>(
     id: json[<span class="hljs-string">&quot;id&quot;</span>],
     title: json[<span class="hljs-string">&quot;title&quot;</span>],
     body: json[<span class="hljs-string">&quot;body&quot;</span>],
-    outputTypes: <span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">String</span>&gt;.from(json[<span class="hljs-string">&quot;outputTypes&quot;</span>].map((x) =&gt; x)),
-    developer: Developer.fromJSON(json[<span class="hljs-string">&quot;developer&quot;</span>]),
+    outputTypes: <span class="hljs-title class_">List</span>&lt;<span class="hljs-title class_">String</span>&gt;.<span class="hljs-title function_">from</span>(json[<span class="hljs-string">&quot;outputTypes&quot;</span>].<span class="hljs-title function_">map</span>((x) =&gt; x)),
+    developer: <span class="hljs-title class_">Developer</span>.<span class="hljs-title function_">fromJSON</span>(json[<span class="hljs-string">&quot;developer&quot;</span>]),
   );
 
-  <span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-built_in">dynamic</span>&gt; toJSON() =&gt; {
+  <span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-built_in">dynamic</span>&gt; <span class="hljs-title function_">toJSON</span>() =&gt; {
     <span class="hljs-string">&quot;id&quot;</span>: id,
     <span class="hljs-string">&quot;title&quot;</span>: title,
     <span class="hljs-string">&quot;body&quot;</span>: body,
-    <span class="hljs-string">&quot;outputTypes&quot;</span>: <span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">dynamic</span>&gt;.from(outputTypes.map((x) =&gt; x)),
-    <span class="hljs-string">&quot;developer&quot;</span>: developer.toJSON(),
+    <span class="hljs-string">&quot;outputTypes&quot;</span>: <span class="hljs-title class_">List</span>&lt;<span class="hljs-built_in">dynamic</span>&gt;.<span class="hljs-title function_">from</span>(outputTypes.<span class="hljs-title function_">map</span>((x) =&gt; x)),
+    <span class="hljs-string">&quot;developer&quot;</span>: developer.<span class="hljs-title function_">toJSON</span>(),
   };
 }
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Developer</span> </span>{
-  <span class="hljs-built_in">String</span> username;
-  <span class="hljs-built_in">String</span> email;
+  <span class="hljs-title class_">String</span> username;
+  <span class="hljs-title class_">String</span> email;
 
-  Developer({
+  <span class="hljs-title class_">Developer</span>({
     <span class="hljs-keyword">this</span>.username,
     <span class="hljs-keyword">this</span>.email,
   });
 
-  <span class="hljs-keyword">factory</span> Developer.fromJSON(<span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-built_in">dynamic</span>&gt; json) =&gt; Developer(
+  <span class="hljs-keyword">factory</span> <span class="hljs-title class_">Developer</span>.<span class="hljs-title function_">fromJSON</span>(<span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-built_in">dynamic</span>&gt; json) =&gt; <span class="hljs-title class_">Developer</span>(
     username: json[<span class="hljs-string">&quot;username&quot;</span>],
     email: json[<span class="hljs-string">&quot;email&quot;</span>],
   );
 
-  <span class="hljs-built_in">Map</span>&lt;<span class="hljs-built_in">String</span>, <span class="hljs-built_in">dynamic</span>&gt; toJSON() =&gt; {
+  <span class="hljs-title class_">Map</span>&lt;<span class="hljs-title class_">String</span>, <span class="hljs-built_in">dynamic</span>&gt; <span class="hljs-title function_">toJSON</span>() =&gt; {
     <span class="hljs-string">&quot;username&quot;</span>: username,
     <span class="hljs-string">&quot;email&quot;</span>: email,
   };
